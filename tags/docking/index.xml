@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docking on Rashid&#39;s blog</title>
+    <link>https://rashid-bioinfo.github.io/tags/docking/</link>
+    <description>Recent content in docking on Rashid&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jun 2020 08:06:25 +0600</lastBuildDate><atom:link href="https://rashid-bioinfo.github.io/tags/docking/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>DOCKING - Computer aided drug design</title>
+      <link>https://rashid-bioinfo.github.io/posts/cadd/</link>
+      <pubDate>Sat, 06 Jun 2020 08:06:25 +0600</pubDate>
+      
+      <guid>https://rashid-bioinfo.github.io/posts/cadd/</guid>
+      <description>Online tutorials for performing docking against a protein in structure based drug design.
+ This tutorial series is about peforming docking using Autodock tools. Please watch the following videos, the videos are created to guide each step involved in docking so that naive user/viewer can also benefit from this effort.
+Intro – Tutorial 0 of 10 | Learn to perform Docking (CADD-101) | CADD Tutorial_Link
+Software Installations – Tutorial 1 of 10 | Learn to perform Docking (CADD-101) | CADD Tutorial_Link</description>
+    </item>
+    
+    
+  </channel>
+</rss>

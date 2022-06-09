@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOCKING - Computer aided drug design</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hub02d7508a1c89b2b7812eab204efeb9a_4223_42x0_resize_box_2.png" />
+
+<meta property="og:title" content="DOCKING - Computer aided drug design" />
+<meta property="og:description" content="Introduction to Sample Post" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rashid-bioinfo.github.io/posts/cadd/" />
+<meta property="article:published_time" content="2020-06-06T08:06:25+06:00" />
+<meta property="article:modified_time" content="2020-06-06T08:06:25+06:00" />
+
+
+    
+    
+<meta name="description" content="Introduction to Sample Post" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+    
+        
+        
+            
+            
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'G-H4LBG7NDFZ', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+        
+        
+
+        
+        
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hubad0af8be1050810477be44a8b6b8654_67138_42x0_resize_box_2.png" alt="Logo">
+      Rashid&#39;s blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hubad0af8be1050810477be44a8b6b8654_67138_42x0_resize_box_2.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu01d4d5f7d964645e00070f48961346b7_64414_42x0_resize_box_2.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/cadd/" title="Docking">Docking</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mendeley/" title="Mendeley">Mendeley</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/modeller/" title="Modeling">Modeling</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/markdown-sample/" title="Managing References &amp; Bibliography">Managing References &amp; Bibliography</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://rashid-bioinfo.github.io/posts/cadd/hero.svg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/rashid_hu27d8977084e516d3314aa918d493e57c_124252_120x120_fit_box_2.png' alt="Author Image">
+          <h5 class="author-name">Rashid Hussain</h5>
+          <p>:date_full</p>
+        </div>
+
+        <div class="title">
+          <h1>DOCKING - Computer aided drug design</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+            
+            <li class="rounded"><a href="/tags/basic" class="btn, btn-sm">Basic</a></li>
+            
+            
+            <li class="rounded"><a href="/tags/docking" class="btn, btn-sm">docking</a></li>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p>Online tutorials for performing docking against a protein in structure based drug design.</p>
+<!-- Greeting! This is an introduction post. This post tests the followings:
+
+- Hero image is in the same directory as the post.
+- This post should be at top of the sidebar.
+- Post author should be the same as specified in `author.yaml` file. -->
+<hr>
+<p>This tutorial series is about peforming docking using Autodock tools. Please watch the following videos, the videos are created to guide each step involved in docking so that naive user/viewer can also benefit from this effort.</p>
+<h6 id="intro--tutorial-0-of-10--learn-to-perform-docking-cadd-101--cadd">Intro – Tutorial 0 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=UooipRybzXs&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=1">Tutorial_Link</a></p>
+<h6 id="software-installations--tutorial-1-of-10--learn-to-perform-docking-cadd-101--cadd">Software Installations – Tutorial 1 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=7zBXWqsAN7Q&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=2">Tutorial_Link</a></p>
+<h6 id="pdb--tutorial-2-of-10--learn-to-perform-docking-cadd-101--cadd">PDB – Tutorial 2 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=8pOIl7HqCEY&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=3">Tutorial_Link</a></p>
+<h6 id="preparing-receptor--ligand-for-docking--tutorial-3-of-10--learn-to-perform-docking-cadd-101">Preparing receptor &amp; ligand for docking – Tutorial 3 of 10 | Learn to perform Docking (CADD-101)</h6>
+<p><a href="https://www.youtube.com/watch?v=EsOQIq_cqf4&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=4">Tutorial_Link</a></p>
+<h6 id="homology-modelling--tutorial-4-of-10--learn-to-perform-docking-cadd-101--cadd">Homology modelling – Tutorial 4 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=RY3k0PDeulo&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=5">Tutorial_Link</a></p>
+<h6 id="homology-modelling--tutorial-5-of-10--learn-to-perform-docking-cadd-101--cadd">Homology modelling – Tutorial 5 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=zVMw76_-5f8&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=6">Tutorial_Link</a></p>
+<h6 id="structural-alignment--tutorial-6-of-10--learn-to-perform-docking-cadd-101--cadd">Structural alignment – Tutorial 6 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=8nyjX6GujgU&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=7">Tutorial_Link</a></p>
+<h6 id="docking--tutorial-7-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 7 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=cy2pRl_WjoQ&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=8">Tutorial_Link</a></p>
+<h6 id="docking--tutorial-8-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 8 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=ls9ES4hqYKs&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=9">Tutorial_Link</a></p>
+<h6 id="docking--tutorial-9-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 9 of 10 | Learn to perform Docking (CADD-101) | CADD</h6>
+<p><a href="https://www.youtube.com/watch?v=vE_ez2TXo6g&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=10">Tutorial_Link</a></p>
+<h6 id="docking--tutorial-10-of-10--cadd-101">Docking | Tutorial 10 of 10 | CADD-101</h6>
+<p><a href="https://www.youtube.com/watch?v=uS5u7ecHZfE&amp;list=PLoJBlOay3pjD8iAepO40Gp4zeLBRPIujv&amp;index=11">Tutorial_Link</a></p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            <a class="btn btn-sm facebook-btn" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            
+            
+                <a class="btn btn-sm twitter-btn" href="https://twitter.com/share?url=https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f&text=DOCKING%20-%20Computer%20aided%20drug%20design&via=Rashid%27s%20blog" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+            
+            
+                <a  class="btn btn-sm reddit-btn" href="https://reddit.com/submit?url=https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f&title=DOCKING%20-%20Computer%20aided%20drug%20design" target="_blank">
+                  <i class="fab fa-reddit"></i>
+                </a>
+            
+            
+            
+            
+                <a class="btn btn-sm linkedin-btn" href="https://www.linkedin.com/shareArticle?url=https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f&title=DOCKING%20-%20Computer%20aided%20drug%20design" target="_blank">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+            
+            
+             
+            
+                 <a class="btn btn-sm whatsapp-btn" href="https://api.whatsapp.com/send?text=DOCKING%20-%20Computer%20aided%20drug%20design https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f" target="_blank">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+            
+            
+                <a class="btn btn-sm email-btn" href="mailto:?subject=DOCKING%20-%20Computer%20aided%20drug%20design&body=https%3a%2f%2frashid-bioinfo.github.io%2fposts%2fcadd%2f" target="_blank">
+                  <i class="fas fa-envelope-open-text"></i>
+                </a>
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/source/content/posts/cadd/index.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+      
+      
+      <div class="col-md-12 next-article">
+        <a href="/posts/mendeley/" title="Managing References &amp; Bibliography" class="btn btn-outline-info">
+          <div>Next <i class="fas fa-chevron-circle-right"></i></div>
+          <div class="next-prev-text">Managing References &amp; Bibliography</div>
+        </a>
+      </div>
+    
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#intro--tutorial-0-of-10--learn-to-perform-docking-cadd-101--cadd">Intro – Tutorial 0 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#software-installations--tutorial-1-of-10--learn-to-perform-docking-cadd-101--cadd">Software Installations – Tutorial 1 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#pdb--tutorial-2-of-10--learn-to-perform-docking-cadd-101--cadd">PDB – Tutorial 2 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#preparing-receptor--ligand-for-docking--tutorial-3-of-10--learn-to-perform-docking-cadd-101">Preparing receptor &amp; ligand for docking – Tutorial 3 of 10 | Learn to perform Docking (CADD-101)</a></li>
+                    <li><a href="#homology-modelling--tutorial-4-of-10--learn-to-perform-docking-cadd-101--cadd">Homology modelling – Tutorial 4 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#homology-modelling--tutorial-5-of-10--learn-to-perform-docking-cadd-101--cadd">Homology modelling – Tutorial 5 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#structural-alignment--tutorial-6-of-10--learn-to-perform-docking-cadd-101--cadd">Structural alignment – Tutorial 6 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#docking--tutorial-7-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 7 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#docking--tutorial-8-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 8 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#docking--tutorial-9-of-10--learn-to-perform-docking-cadd-101--cadd">Docking – Tutorial 9 of 10 | Learn to perform Docking (CADD-101) | CADD</a></li>
+                    <li><a href="#docking--tutorial-10-of-10--cadd-101">Docking | Tutorial 10 of 10 | CADD-101</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#experiences">Experience</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#publications">Publications</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#education">Education</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#projects">Projects</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#achievements">Achievements</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#accomplishments">Accomplishments</a>
+                </li>
+              
+            
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:rashid.bioinfo@gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>rashid.bioinfo@gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;92-3155235956</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+    
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

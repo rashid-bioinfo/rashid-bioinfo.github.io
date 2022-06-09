@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modeling on Rashid&#39;s blog</title>
+    <link>https://rashid-bioinfo.github.io/tags/modeling/</link>
+    <description>Recent content in Modeling on Rashid&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jun 2020 08:06:25 +0600</lastBuildDate><atom:link href="https://rashid-bioinfo.github.io/tags/modeling/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Homology Modeling</title>
+      <link>https://rashid-bioinfo.github.io/posts/modeller/</link>
+      <pubDate>Mon, 15 Jun 2020 08:06:25 +0600</pubDate>
+      
+      <guid>https://rashid-bioinfo.github.io/posts/modeller/</guid>
+      <description>Online tutorials for Homology Modeling using Modeller tool.
+ This tutorial series is about homology modeling using Modeller. Please watch the following videos, the videos are created to guide each step involved in homology modeling so that even naive user/viewer can also benefit from this effort.
+Homology Modelling | Tutorial 1 of 5 | Modeller Tutorial_Link
+Homology Modelling | Tutorial 2 of 5 | Part 1 | Modeller Tutorial_Link
+Homology Modelling | Tutorial 2 of 5 | Part 2 | Modeller Tutorial_Link</description>
+    </item>
+    
+    
+  </channel>
+</rss>

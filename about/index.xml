@@ -5,13 +5,20 @@
     <link>https://rashid-bioinfo.github.io/about/</link>
     <description>Recent content in Abouts on Rashid&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://rashid-bioinfo.github.io/about/index.xml" rel="self" type="application/rss+xml" /><item>
+    <language>en-us</language>
+    <managingEditor>rashid.bioinfo@gmail.com (Rashid Hussain)</managingEditor>
+    <webMaster>rashid.bioinfo@gmail.com (Rashid Hussain)</webMaster><atom:link href="https://rashid-bioinfo.github.io/about/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>About</title>
       <link>https://rashid-bioinfo.github.io/about/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <author>rashid.bioinfo@gmail.com (Rashid Hussain)</author>
       <guid>https://rashid-bioinfo.github.io/about/about/</guid>
-      <description>Illustration from Victor Hugo et son temps (1881)   The Hunchback of Notre-Dame (French: Notre-Dame de Paris) is a French Romantic/Gothic novel by Victor Hugo, published in 1831. The original French title refers to Notre Dame Cathedral, on which the story is centered. English translator Frederic Shoberl named the novel The Hunchback of Notre Dame in 1833 because at the time, Gothic novels were more popular than Romance novels in England.</description>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://rashid-bioinfo.github.io/images/Victor_Hugo-Hunchback.jpg&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;Illustration from Victor Hugo et son temps (1881)&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;The Hunchback of Notre-Dame&lt;/em&gt; (French: &lt;em&gt;Notre-Dame de Paris&lt;/em&gt;) is a French Romantic/Gothic novel by Victor Hugo, published in 1831. The original French title refers to Notre Dame Cathedral, on which the story is centered. English translator Frederic Shoberl named the novel The Hunchback of Notre Dame in 1833 because at the time, Gothic novels were more popular than Romance novels in England. The story is set in Paris, France in the Late Middle Ages, during the reign of Louis XI.&lt;/p&gt;</description>
     </item>
     
     

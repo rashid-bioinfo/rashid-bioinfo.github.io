@@ -6,16 +6,22 @@
     <description>Recent content in Mendeley on Rashid&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>rashid.bioinfo@gmail.com (Rashid Hussain)</managingEditor>
+    <webMaster>rashid.bioinfo@gmail.com (Rashid Hussain)</webMaster>
     <lastBuildDate>Tue, 06 Oct 2020 08:06:25 +0600</lastBuildDate><atom:link href="https://rashid-bioinfo.github.io/tags/mendeley/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>Managing References &amp; Bibliography</title>
       <link>https://rashid-bioinfo.github.io/posts/mendeley/</link>
       <pubDate>Tue, 06 Oct 2020 08:06:25 +0600</pubDate>
-      
+      <author>rashid.bioinfo@gmail.com (Rashid Hussain)</author>
       <guid>https://rashid-bioinfo.github.io/posts/mendeley/</guid>
-      <description>Online session for explaining thesis writing and hands on training on Mendeley, a software for managing references and bibliography.
- This webinar is about managing references in your thesis or manuscript. Please watch the following videos, they will guide you right from installing mendeley software to inserting and managing references and bibliography in your documents.
-Managing References &amp;amp; Bibliography | Webinar | Mendeley | Part 1 Webinar_Link
-Managing References &amp;amp; Bibliography | Webinar | Mendeley | Part 2 Webinar_Link</description>
+      <description>&lt;p&gt;Online session for explaining thesis writing and hands on training on Mendeley, a software for managing references and bibliography.&lt;/p&gt;
+&lt;!-- Greeting! This is an introduction post. This post tests the followings:
+
+- Hero image is in the same directory as the post.
+- This post should be at top of the sidebar.
+- Post author should be the same as specified in `author.yaml` file. --&gt;
+&lt;hr&gt;
+&lt;p&gt;This webinar is about managing references in your thesis or manuscript. Please watch the following videos, they will guide you right from installing mendeley software to inserting and managing references and bibliography in your documents.&lt;/p&gt;</description>
     </item>
     
     

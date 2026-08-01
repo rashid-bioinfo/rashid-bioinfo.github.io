@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Story — Rashid Hussain, Ph.D.</title>
+  <meta name="description" content="The life and career journey of Rashid Hussain, Ph.D. — from bioinformatics studies in Islamabad to the frontier of computational pathology in Milan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --navy:#0a0f1e; --navy2:#111827; --blue:#2563eb; --teal:#0d9488;
+      --gold:#f59e0b; --slate:#f8fafc; --gray:#64748b; --dark:#1e293b; --white:#fff;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--dark);overflow-x:hidden}
+
+    /* Progress bar */
+    #rp{position:fixed;top:0;left:0;width:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:1001;transition:width .1s}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;z-index:900;transition:background .3s,box-shadow .3s}
+    nav.scrolled{background:rgba(10,15,30,.95);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,0,0,.3)}
+    .nav-logo{color:white;font-weight:700;font-size:1rem;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+    .nav-links{display:flex;gap:1.5rem;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:white}
+    .nav-li{color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:.4rem}
+    .nav-li:hover{color:white}
+    @media(max-width:768px){.nav-links{display:none}}
+
+    /* Side dots */
+    .sdots{position:fixed;right:.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:800}
+    .sdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:all .25s}
+    .sdot.on,.sdot:hover{background:white;transform:scale(1.4)}
+    @media(max-width:768px){.sdots{display:none}}
+
+    /* HERO */
+    #hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#121b3a 50%,#0c1528 100%);display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(37,99,235,.12) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+    .hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%);pointer-events:none}
+    .hero-bg-word{position:absolute;right:-1rem;bottom:-2rem;font-size:clamp(80px,16vw,220px);font-weight:900;font-family:'Playfair Display',serif;color:rgba(255,255,255,.025);line-height:1;user-select:none}
+    .hero-content{position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:7rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .hero-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.4);color:#93c5fd;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:999px;margin-bottom:1.5rem}
+    .hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;color:white;line-height:1.1;margin-bottom:1rem}
+    .hero-tagline{font-size:1.05rem;color:rgba(255,255,255,.62);line-height:1.8;margin-bottom:2rem;min-height:4rem}
+    .hero-flags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+    .hero-flag{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.8);font-size:.78rem;padding:.3rem .8rem;border-radius:999px}
+    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-p{background:var(--blue);color:white;text-decoration:none;padding:.75rem 1.6rem;border-radius:.5rem;font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+    .btn-p:hover{background:#1d4ed8;transform:translateY(-2px)}
+    .btn-o{background:transparent;color:white;text-decoration:none;padding:.75rem 1.6rem;border-radius:.5rem;font-weight:600;font-size:.9rem;border:2px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+    .btn-o:hover{border-color:white;background:rgba(255,255,255,.08)}
+    .hero-photo-wrap{display:flex;justify-content:center}
+    .photo-ring{width:300px;height:300px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--blue),var(--teal),var(--gold));animation:huerot 8s linear infinite}
+    @keyframes huerot{to{filter:hue-rotate(360deg)}}
+    .photo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid var(--navy)}
+    .photo-inner img{width:100%;height:100%;object-fit:cover;object-position:72% 32%}
+    .hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.35);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+    .bounce{animation:bou 2s infinite}
+    @keyframes bou{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+    /* STATS */
+    #stats{background:white;padding:3rem 2rem;border-top:1px solid #e2e8f0}
+    .stats-g{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2rem;text-align:center}
+    .sn{font-size:2.4rem;font-weight:800;color:var(--blue);display:block;line-height:1}
+    .sl{font-size:.75rem;color:var(--gray);font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-top:.35rem}
+
+    /* CHAPTERS */
+    .chapter{padding:6rem 2rem;position:relative;overflow:hidden}
+    .ch-dark{background:var(--navy2);color:white}
+    .ch-light{background:var(--slate)}
+    .ch-white{background:white}
+    .ch-blue{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:white}
+    .ch-teal{background:linear-gradient(135deg,#0f766e,#0d9488);color:white}
+    .ch-num{position:absolute;right:1.5rem;top:1.5rem;font-size:clamp(5rem,12vw,11rem);font-weight:900;font-family:'Playfair Display',serif;line-height:1;user-select:none;pointer-events:none}
+    .ch-dark .ch-num,.ch-blue .ch-num,.ch-teal .ch-num{color:rgba(255,255,255,.04)}
+    .ch-light .ch-num,.ch-white .ch-num{color:rgba(30,41,59,.04)}
+    .ch-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.55fr;gap:4rem;align-items:start}
+    .ch-inner.rev{grid-template-columns:1.55fr 1fr}
+    .ch-eye{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.85rem}
+    .ch-dark .ch-eye,.ch-blue .ch-eye{color:#60a5fa}
+    .ch-teal .ch-eye{color:rgba(255,255,255,.7)}
+    .ch-light .ch-eye,.ch-white .ch-eye{color:var(--blue)}
+    .ch-yr{display:inline-block;padding:.22rem .75rem;border-radius:999px;font-size:.82rem;font-weight:600;margin-bottom:.65rem}
+    .ch-dark .ch-yr,.ch-blue .ch-yr,.ch-teal .ch-yr{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9)}
+    .ch-light .ch-yr,.ch-white .ch-yr{background:var(--blue);color:white}
+    .ch-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:1.2rem}
+    .ch-body{font-size:1rem;line-height:1.85}
+    .ch-dark .ch-body,.ch-blue .ch-body,.ch-teal .ch-body{color:rgba(255,255,255,.78)}
+    .ch-light .ch-body,.ch-white .ch-body{color:var(--gray)}
+    .ch-body p+p{margin-top:.9rem}
+    .ch-loc{display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:500;margin-top:1.5rem;opacity:.65}
+
+    /* Achievement cards */
+    .ac-grid{display:flex;flex-direction:column;gap:.85rem}
+    .ac{border-radius:1rem;padding:1.1rem 1.3rem;display:flex;gap:.85rem;align-items:flex-start;transition:transform .2s}
+    .ac:hover{transform:translateX(4px)}
+    .ch-dark .ac,.ch-blue .ac,.ch-teal .ac{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11)}
+    .ch-light .ac,.ch-white .ac{background:white;border:1px solid #e2e8f0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .ac-icon{width:2.4rem;height:2.4rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .ac-title{font-weight:700;font-size:.92rem;margin-bottom:.2rem}
+    .ac-desc{font-size:.82rem;line-height:1.55;opacity:.7}
+
+    /* CREDENTIALS */
+    #creds{background:var(--navy);padding:6rem 2rem}
+    .creds-h{text-align:center;margin-bottom:3rem}
+    .creds-h h2{font-family:'Playfair Display',serif;font-size:2.4rem;color:white;margin-bottom:.65rem}
+    .creds-h p{color:rgba(255,255,255,.5);font-size:.95rem}
+    .creds-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+    .cc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;padding:1.75rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .cc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .cc.gold::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+    .cc.blue::before{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+    .cc.teal::before{background:linear-gradient(90deg,#0d9488,#14b8a6)}
+    .cc.purple::before{background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+    .cc.green::before{background:linear-gradient(90deg,#059669,#34d399)}
+    .cc.red::before{background:linear-gradient(90deg,#dc2626,#f87171)}
+    .cc.orange::before{background:linear-gradient(90deg,#ea580c,#fb923c)}
+    .cc:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .cc-icon{font-size:2rem;margin-bottom:.85rem}
+    .cc-title{font-weight:700;color:white;font-size:1rem;margin-bottom:.2rem}
+    .cc-org{font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:.6rem}
+    .cc-date{font-size:.78rem;color:rgba(255,255,255,.38)}
+    .cc-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:.85rem;font-size:.8rem;color:#60a5fa;text-decoration:none}
+    .cc-link:hover{color:#93c5fd}
+
+    /* HIGHLIGHTS */
+    #highlights{background:var(--slate);padding:6rem 2rem}
+    .hl-inner{max-width:1100px;margin:0 auto}
+    .hl-h{text-align:center;margin-bottom:3rem}
+    .hl-h h2{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--dark);margin-bottom:.65rem}
+    .hl-h p{color:var(--gray);font-size:.95rem}
+    .hl-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+    .hl-card{background:white;border-radius:1.25rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .3s,box-shadow .3s}
+    .hl-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.11)}
+    .hl-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+    .hl-body{padding:1.4rem}
+    .hl-date{font-size:.72rem;color:var(--gray);margin-bottom:.4rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+    .hl-title{font-weight:700;color:var(--dark);font-size:.97rem;margin-bottom:.45rem}
+    .hl-text{font-size:.85rem;color:var(--gray);line-height:1.65;margin-bottom:.85rem}
+    .hl-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--blue);font-size:.83rem;font-weight:600;text-decoration:none}
+    .hl-link:hover{color:#1d4ed8}
+
+    /* CLOSING */
+    #closing{background:linear-gradient(135deg,var(--navy) 0%,#0d1a3a 100%);padding:8rem 2rem;text-align:center}
+    .cl-inner{max-width:680px;margin:0 auto}
+    .cl-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:white;margin-bottom:1.4rem;line-height:1.2}
+    .cl-inner p{color:rgba(255,255,255,.58);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem}
+    .cl-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+    /* Animations */
+    .rev{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .rev-l{opacity:0;transform:translateX(-28px);transition:all .65s ease}
+    .rev-r{opacity:0;transform:translateX(28px);transition:all .65s ease}
+    .rev.on,.rev-l.on,.rev-r.on{opacity:1;transform:none}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-content{grid-template-columns:1fr;text-align:center;gap:2.5rem}
+      .hero-photo-wrap{order:-1}
+      .photo-ring{width:210px;height:210px}
+      .hero-flags,.hero-cta{justify-content:center}
+      .ch-inner,.ch-inner.rev{grid-template-columns:1fr;gap:2rem}
+      .stats-g{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+
+<div id="rp"></div>
+
+<nav id="mnav">
+  <a href="index.html" class="nav-logo"><i class="fa-solid fa-arrow-left"></i> Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#ch1">Origins</a></li>
+    <li><a href="#ch3">PhD</a></li>
+    <li><a href="#ch5">Manchester</a></li>
+    <li><a href="#ch7">Postdoc</a></li>
+    <li><a href="#creds">Credentials</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener" class="nav-li">
+    <i class="fa-brands fa-linkedin"></i> LinkedIn
+  </a>
+</nav>
+
+<nav class="sdots" id="sdots">
+  <div class="sdot" data-s="hero" title="Intro"></div>
+  <div class="sdot" data-s="ch1" title="Origins"></div>
+  <div class="sdot" data-s="ch2" title="Masters"></div>
+  <div class="sdot" data-s="ch3" title="Early Career"></div>
+  <div class="sdot" data-s="ch4" title="PhD"></div>
+  <div class="sdot" data-s="ch5" title="Manchester"></div>
+  <div class="sdot" data-s="ch6" title="Global"></div>
+  <div class="sdot" data-s="ch7" title="Postdoc"></div>
+  <div class="sdot" data-s="creds" title="Credentials"></div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-bg-word">Story</div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-label"><i class="fa-solid fa-book-open"></i> Life &amp; Career Journey</div>
+      <h1 class="hero-name">Rashid Hussain,&nbsp;Ph.D.</h1>
+      <p class="hero-tagline" id="tagline"></p>
+      <div class="hero-flags">
+        <span class="hero-flag">🇵🇰 Pakistan</span>
+        <span class="hero-flag">🇬🇧 United Kingdom</span>
+        <span class="hero-flag">🇮🇹 Italy</span>
+        <span class="hero-flag">🇺🇸 United States (Remote)</span>
+        <span class="hero-flag">🇪🇸 Spain</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#ch1" class="btn-p"><i class="fa-solid fa-play"></i> Read the Story</a>
+        <a href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener" class="btn-o"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-ring"><div class="photo-inner"><img src="rashid.jpg" alt="Rashid Hussain" /></div></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="bounce"><i class="fa-solid fa-chevron-down"></i></div>Scroll to explore</div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div id="stats">
+  <div class="stats-g">
+    <div class="rev"><span class="sn" data-n="20">0</span><span class="sl">Years in Science</span></div>
+    <div class="rev"><span class="sn" data-n="5">0</span><span class="sl">Countries</span></div>
+    <div class="rev"><span class="sn" data-n="12">0</span><span class="sl">Publications</span></div>
+    <div class="rev"><span class="sn" data-n="7">0</span><span class="sl">Research Projects</span></div>
+    <div class="rev"><span class="sn" data-n="671">0</span><span class="sl">LinkedIn Followers</span></div>
+    <div class="rev"><span class="sn" data-n="19">0</span><span class="sl">Tutorial Videos</span></div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 1: ORIGINS ══ -->
+<section class="chapter ch-dark" id="ch1">
+  <div class="ch-num">01</div>
+  <div class="ch-inner">
+    <div class="rev-l">
+      <div class="ch-eye"><i class="fa-solid fa-seedling"></i> Chapter One</div>
+      <div class="ch-yr">2006 – 2010</div>
+      <h2 class="ch-title">A Bioinformatician is Born</h2>
+      <div class="ch-body">
+        <p>Every great scientific journey begins with curiosity. For Rashid Hussain, it started in Islamabad, Pakistan — where a fascination with biology, computation, and data drew him to study Bioinformatics at COMSATS University Islamabad.</p>
+        <p>Over four years of rigorous undergraduate study, Rashid built the analytical and computational foundations that would underpin his entire career — covering bioinformatics, phylogenetic data analysis, and the quantitative tools that would define his scientific path.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> COMSATS University Islamabad, Pakistan 🇵🇰</div>
+    </div>
+    <div class="ac-grid rev-r">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(37,99,235,.2)">🎓</div>
+        <div><div class="ac-title">B.S. Bioinformatics</div><div class="ac-desc">COMSATS University Islamabad · 2006 – 2010 · Foundation in bioinformatics, phylogenetic data analysis &amp; computational biology</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(245,158,11,.2)">🌟</div>
+        <div><div class="ac-title">The Spark</div><div class="ac-desc">Drawn early to the intersection of biology and computation — using data and algorithms to decode the language of life</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(13,148,136,.2)">🏙️</div>
+        <div><div class="ac-title">Islamabad, Pakistan</div><div class="ac-desc">Pakistan's capital — a hub of science and technology, home to COMSATS University and the National Centre of Bioinformatics</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 2: MASTERS ══ -->
+<section class="chapter ch-light" id="ch2">
+  <div class="ch-num">02</div>
+  <div class="ch-inner rev">
+    <div class="ac-grid rev-l">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(37,99,235,.1)">🔬</div>
+        <div><div class="ac-title" style="color:var(--dark)">M.S. Bioinformatics</div><div class="ac-desc">COMSATS University Islamabad · 2011 – 2013 · Research-focused graduate programme in bioinformatics</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(13,148,136,.1)">💻</div>
+        <div><div class="ac-title" style="color:var(--dark)">Deepening Computational Skills</div><div class="ac-desc">Advanced training in sequence analysis, structural bioinformatics, molecular modelling and computational drug design</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(245,158,11,.1)">🏛️</div>
+        <div><div class="ac-title" style="color:var(--dark)">COMSATS University Islamabad</div><div class="ac-desc">A leading public research university — strong bioinformatics department and established research culture in computational sciences</div></div>
+      </div>
+    </div>
+    <div class="rev-r">
+      <div class="ch-eye"><i class="fa-solid fa-flask"></i> Chapter Two</div>
+      <div class="ch-yr">2011 – 2013</div>
+      <h2 class="ch-title" style="color:var(--dark)">Mastering the Craft</h2>
+      <div class="ch-body">
+        <p>The next chapter took Rashid back to COMSATS University Islamabad — for an M.S. in Bioinformatics.</p>
+        <p>Immersed in a rigorous research environment, Rashid advanced his understanding of sequence analysis, structural bioinformatics, and computer-aided drug design. His master's work laid the groundwork for a career defined by bridging biology, chemistry, and data science into a unified computational toolkit.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> COMSATS University Islamabad, Pakistan 🇵🇰</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 3: EARLY CAREER ══ -->
+<section class="chapter ch-white" id="ch3">
+  <div class="ch-num">03</div>
+  <div class="ch-inner">
+    <div class="rev-l">
+      <div class="ch-eye"><i class="fa-solid fa-industry"></i> Chapter Three</div>
+      <div class="ch-yr">2014 – 2019</div>
+      <h2 class="ch-title" style="color:var(--dark)">Science Meets Industry</h2>
+      <div class="ch-body">
+        <p>After his master's degree, Rashid's career took shape through both academia and industry. He began as a Research Intern at the <strong>National Centre of Bioinformatics, Quaid-e-Azam University</strong> — gaining hands-on research experience in a national bioinformatics hub.</p>
+        <p>His year as Research Associate &amp; Teaching Assistant at <strong>LUMS</strong> was equally formative: he developed <strong>SPECTRUM</strong>, a MATLAB-based toolbox for top-down proteomics data analysis, while conducting HEC-funded HCV drug design research and teaching 28 undergraduate labs in Computational Biology and Protein Informatics — igniting a passion for science education that would grow throughout his career.</p>
+        <p>In parallel, he joined <strong>A.Z. Pharmaceutical Co.</strong> as a Research Assistant — contributing to pharmaceutical research and bridging his computational expertise with applied industry science.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> Islamabad &amp; Lahore, Pakistan 🇵🇰</div>
+    </div>
+    <div class="ac-grid rev-r">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(13,148,136,.1)">🔭</div>
+        <div><div class="ac-title" style="color:var(--dark)">Research Intern</div><div class="ac-desc">National Centre of Bioinformatics, Quaid-e-Azam University · Jun 2014 – Jan 2015 · Bioinformatics research at a national centre of excellence</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(37,99,235,.07)">🧬</div>
+        <div><div class="ac-title" style="color:var(--dark)">Research Associate &amp; TA</div><div class="ac-desc">LUMS · Feb 2015 – Jan 2016 · SPECTRUM toolbox (MATLAB), HCV pharmacophore, 28 undergraduate labs</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(245,158,11,.08)">🏭</div>
+        <div><div class="ac-title" style="color:var(--dark)">Research Assistant</div><div class="ac-desc">A.Z. Pharmaceutical Co. Ltd. · Feb 2016 – Dec 2019 · Pharmaceutical research bridging computational and applied science</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(245,158,11,.08)">🏆</div>
+        <div><div class="ac-title" style="color:var(--dark)">Best Poster — IST 2015</div><div class="ac-desc">Recognised for research excellence at the Institute of Space Technology conference, Feb 2015</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 4: PHD ══ -->
+<section class="chapter ch-blue" id="ch4">
+  <div class="ch-num">04</div>
+  <div class="ch-inner rev">
+    <div class="ac-grid rev-l">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🎓</div>
+        <div><div class="ac-title">Ph.D. Chemistry (Computational)</div><div class="ac-desc">Forman Christian College (A Chartered University) · Aug 2017 – Mar 2023 · Magna Cum Laude (Higher Honors) · HCV NS3 Protease Inhibitors via CADD</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🦠</div>
+        <div><div class="ac-title">COVID-19 Publication</div><div class="ac-desc">Virtual screening of piperidine-based compounds against SARS-CoV-2 · Lab-in-Silico (2020) · DOI: 10.22034/lins20012050</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🏆</div>
+        <div><div class="ac-title">Best Poster — FCC 2022</div><div class="ac-desc">Awarded best poster at Forman Christian College research symposium for doctoral research</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🎥</div>
+        <div><div class="ac-title">Online Tutorial Series (19 videos)</div><div class="ac-desc">YouTube tutorials on MODELLER, AutoDock &amp; Mendeley — making computational biology accessible to early-career researchers across Pakistan</div></div>
+      </div>
+    </div>
+    <div class="rev-r">
+      <div class="ch-eye"><i class="fa-solid fa-microscope"></i> Chapter Four</div>
+      <div class="ch-yr">Aug 2017 – Mar 2023</div>
+      <h2 class="ch-title">The Doctorate</h2>
+      <div class="ch-body">
+        <p>Rashid pursued his Ph.D. in Chemistry at Forman Christian College (A Chartered University), Lahore — graduating Magna Cum Laude (Higher Honors). His doctoral thesis, <em>"Computer-Aided Drug Design and Synthesis of HCV NS3 Protease Inhibitors"</em>, tackled one of Pakistan's most pressing public health challenges.</p>
+        <p>The COVID-19 pandemic struck mid-doctorate. Rashid pivoted rapidly to contribute — publishing a virtual screening study on piperidine-based SARS-CoV-2 inhibitors in 2020, demonstrating the power of computational chemistry to respond to emerging threats in real time.</p>
+        <p>During his doctoral years, Rashid also created 19 YouTube tutorials on computational biology tools — reaching hundreds of early-career researchers across Pakistan who lacked access to formal training, and igniting a commitment to science education that would define the next chapter of his career.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> Forman Christian College, Lahore 🇵🇰</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 5: MANCHESTER ══ -->
+<section class="chapter ch-light" id="ch5">
+  <div class="ch-num">05</div>
+  <div class="ch-inner">
+    <div class="rev-l">
+      <div class="ch-eye"><i class="fa-solid fa-plane"></i> Chapter Five</div>
+      <div class="ch-yr">2022</div>
+      <h2 class="ch-title" style="color:var(--dark)">Manchester Calling</h2>
+      <div class="ch-body">
+        <p>The breakthrough came in 2022. Awarded the prestigious <strong>IRSIP Fellowship (£6,250)</strong> by Pakistan's Higher Education Commission, Rashid flew to Manchester to join Professor Lydia Tabernero's structural biology and drug discovery group at the University of Manchester — one of the world's leading research universities.</p>
+        <p>During six intensive on-site months, Rashid developed <strong>VSpipe-GUI</strong> — a cross-platform, Python-based graphical interface for high-throughput virtual screening of large chemical libraries. The software became a cornerstone publication (IJMS, 2024) and the foundation of an ongoing international collaboration.</p>
+        <p>Manchester didn't just advance his research — it marked the beginning of a genuinely international career. By October 2022, Rashid was also a <strong>Certified Carpentries Instructor</strong>, ready to take his teaching global.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> University of Manchester, UK 🇬🇧</div>
+    </div>
+    <div class="ac-grid rev-r">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(37,99,235,.1)">✈️</div>
+        <div><div class="ac-title" style="color:var(--dark)">IRSIP Fellowship — £6,250</div><div class="ac-desc">Competitive international fellowship from Pakistan's Higher Education Commission · Jan – Jun 2022 · University of Manchester</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(13,148,136,.1)">🖥️</div>
+        <div><div class="ac-title" style="color:var(--dark)">VSpipe-GUI — Born in Manchester</div><div class="ac-desc">Open-source GUI for virtual screening pipelines · Published in IJMS (2024, DOI: 10.3390/ijms25042002) · Impact: 12+ citations</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(245,158,11,.1)">🧑‍🏫</div>
+        <div><div class="ac-title" style="color:var(--dark)">Carpentries Instructor Certified</div><div class="ac-desc">October 2022 · Certified to teach Shell, Git &amp; Python workshops internationally — first of many global engagements</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 6: GLOBAL ══ -->
+<section class="chapter ch-dark" id="ch6">
+  <div class="ch-num">06</div>
+  <div class="ch-inner rev">
+    <div class="ac-grid rev-l">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.12)">🌊</div>
+        <div><div class="ac-title">Software Developer — Deep Waters, New York</div><div class="ac-desc">Nov 2022 – May 2023 · PyMOL plugin for GIST water thermodynamics analysis (AMBER) · IP-MDSimulator</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.12)">🧬</div>
+        <div><div class="ac-title">Bioinformatician — Ayass BioScience, Texas</div><div class="ac-desc">Jul 2023 – May 2025 · F420 Pipeline GUI, transcriptomics, ML/AI, agentic AI integration for biomedical data</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.12)">🎓</div>
+        <div><div class="ac-title">Carpentries Instructor — 3 Continents</div><div class="ac-desc">IRTA Barcelona 🇪🇸 · Univ. of Vermont 🇺🇸 · Brac Univ. Bangladesh 🇧🇩 · 150+ researchers trained</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.12)">🌐</div>
+        <div><div class="ac-title">UK Global Talent Visa — Royal Society Endorsement</div><div class="ac-desc">Endorsed by the Royal Society, UK as a global leader in science and research — enabling international career mobility across borders</div></div>
+      </div>
+    </div>
+    <div class="rev-r">
+      <div class="ch-eye"><i class="fa-solid fa-globe"></i> Chapter Six</div>
+      <div class="ch-yr">2022 – 2025</div>
+      <h2 class="ch-title">The International Scientist</h2>
+      <div class="ch-body">
+        <p>Manchester opened the door and Rashid walked through it. Over the next three years, he built a portfolio of international collaborations spanning continents — all while securing a <strong>Royal Society, UK</strong>–endorsed <strong>UK Global Talent Visa</strong> that recognised him as a leader in his field.</p>
+        <p>As a contract Software Developer for <strong>Deep Waters</strong> in New York, he built a PyMOL plugin for analysing water thermodynamics using Grid Inhomogeneous Solvation Theory (GIST). As a <strong>Bioinformatician at Ayass BioScience</strong> (Texas), he developed API-driven pipelines, transcriptome analysis workflows, and integrated agentic AI into biomedical data processing.</p>
+        <p>Throughout this period, his Carpentries teaching took him across three continents — Spain, the USA, and Bangladesh — making him a truly global science educator alongside his research career.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> UK · USA · Spain · Bangladesh 🌍</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER 7: POSTDOC ══ -->
+<section class="chapter ch-teal" id="ch7">
+  <div class="ch-num">07</div>
+  <div class="ch-inner">
+    <div class="rev-l">
+      <div class="ch-eye"><i class="fa-solid fa-dna"></i> Chapter Seven</div>
+      <div class="ch-yr">January 2026 – Present</div>
+      <h2 class="ch-title">Computational Pathology</h2>
+      <div class="ch-body">
+        <p>In January 2026, Rashid joined <strong>Humanitas Research Hospital (IRCCS)</strong> in Rozzano, Milan — one of Italy's leading clinical research hospitals and a global hub for cancer science — as Postdoctoral Researcher in Computational Pathology.</p>
+        <p>His work centres on the <strong>SMS (Sarcoma Microenvironment Score)</strong> project: an AI-driven predictive and prognostic tool for sarcoma outcomes. Using Imaging Mass Cytometry (IMC) and multiplexed spatial omics data, Rashid maps the tumour microenvironment to extract spatially resolved biomarkers that go beyond conventional histology.</p>
+        <p>Simultaneously, he maintains his <strong>Visiting Academic</strong> role at the University of Manchester, contributing to drug discovery and fungal resistance research with Professor Lydia Tabernero's group — keeping one foot in drug discovery while the other advances cancer diagnostics.</p>
+        <p>In July 2026, Rashid presented at the <strong>RSC Chemical Biology Symposium</strong> in London — the latest milestone in a career that shows no signs of slowing down.</p>
+      </div>
+      <div class="ch-loc"><i class="fa-solid fa-map-pin"></i> Humanitas Research Hospital, Milan, Italy 🇮🇹</div>
+    </div>
+    <div class="ac-grid rev-r">
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🏥</div>
+        <div><div class="ac-title">Postdoctoral Researcher</div><div class="ac-desc">Humanitas Research Hospital (IRCCS) · Jan 2026 – Present · Computational Pathology, AI, Spatial Omics, IMC</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🔬</div>
+        <div><div class="ac-title">SMS Project: AI for Sarcoma</div><div class="ac-desc">AI-based predictive tool using IMC &amp; spatial omics to map tumour microenvironments — going beyond histology</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">📡</div>
+        <div><div class="ac-title">VeSpA — New Spatial Omics Tool</div><div class="ac-desc">2026 preprint: a novel computational method for spatial omics analysis extending Rashid's computational toolkit</div></div>
+      </div>
+      <div class="ac">
+        <div class="ac-icon" style="background:rgba(255,255,255,.15)">🏛️</div>
+        <div><div class="ac-title">Visiting Academic — Manchester</div><div class="ac-desc">Jul 2025 – Present · Drug discovery, fungal resistance &amp; VSpipe-GUI with Prof. Lydia Tabernero's group</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CREDENTIALS ══ -->
+<section id="creds">
+  <div class="creds-h rev">
+    <h2>Credentials &amp; Recognition</h2>
+    <p>Verified professional registrations, awards, and certifications from LinkedIn</p>
+  </div>
+  <div class="creds-g">
+    <div class="cc gold rev">
+      <div class="cc-icon">🏅</div>
+      <div class="cc-title">Registered Scientist (RSci)</div>
+      <div class="cc-org">Science Council UK · Royal Society of Chemistry</div>
+      <div class="cc-date">Awarded June 2025</div>
+      <a class="cc-link" href="https://credentials.recognition.rsc.org/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Credential</a>
+    </div>
+    <div class="cc blue rev">
+      <div class="cc-icon">🌐</div>
+      <div class="cc-title">UK Global Talent Visa</div>
+      <div class="cc-org">Royal Society, UK · May 2025</div>
+      <div class="cc-date">UK Home Office · Global Leaders in Science</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> Verify on LinkedIn</a>
+    </div>
+    <div class="cc teal rev">
+      <div class="cc-icon">⚗️</div>
+      <div class="cc-title">Associate Member (AMRSC)</div>
+      <div class="cc-org">Royal Society of Chemistry</div>
+      <div class="cc-date">October 2023 – Present</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="cc purple rev">
+      <div class="cc-icon">⚛️</div>
+      <div class="cc-title">Member (ACS)</div>
+      <div class="cc-org">American Chemical Society</div>
+      <div class="cc-date">May 2022 – Present</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="cc green rev">
+      <div class="cc-icon">🖥️</div>
+      <div class="cc-title">Certified Carpentries Instructor</div>
+      <div class="cc-org">The Carpentries</div>
+      <div class="cc-date">October 2022 – Present · Shell, Git, Python</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="cc gold rev">
+      <div class="cc-icon">🤖</div>
+      <div class="cc-title">5-Day AI Agents Intensive</div>
+      <div class="cc-org">Kaggle × Google</div>
+      <div class="cc-date">2025 · ADK · Capstone: VSpipe-Agent</div>
+      <a class="cc-link" href="https://www.kaggle.com/rashidbioinfo" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Kaggle Profile</a>
+    </div>
+    <div class="cc orange rev">
+      <div class="cc-icon">🎤</div>
+      <div class="cc-title">International Speaker</div>
+      <div class="cc-org">2nd Int'l Symposium · COMSATS University Islamabad</div>
+      <div class="cc-date">February 2026 · Protein Function &amp; Drug Design</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn Post</a>
+    </div>
+    <div class="cc blue rev">
+      <div class="cc-icon">🏆</div>
+      <div class="cc-title">Best Poster — FCC Research Symposium</div>
+      <div class="cc-org">Forman Christian College, Lahore</div>
+      <div class="cc-date">2022 · PhD Doctoral Research</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="cc red rev">
+      <div class="cc-icon">🧑‍💼</div>
+      <div class="cc-title">Leadership for Scientists</div>
+      <div class="cc-org">Society of Chemical Industry (SCI) · London</div>
+      <div class="cc-date">2026 · RSC Researcher Development &amp; Travel Grant</div>
+      <a class="cc-link" href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn Post</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HIGHLIGHTS ══ -->
+<section id="highlights">
+  <div class="hl-inner">
+    <div class="hl-h rev">
+      <h2>Recent Milestones</h2>
+      <p>Highlights from 2025–2026 — conferences, awards, and achievements</p>
+    </div>
+    <div class="hl-g">
+      <div class="hl-card rev">
+        <div class="hl-img" style="background:linear-gradient(135deg,#1e3a8a,#2563eb)">🔬</div>
+        <div class="hl-body">
+          <div class="hl-date">July 2026</div>
+          <div class="hl-title">Chemical Biology Symposium — RSC London</div>
+          <div class="hl-text">Presented VSpipe-GUI at the Royal Society of Chemistry Chemical Biology Symposium in London — connecting years of drug discovery research with the global scientific community. 32 reactions, 620 impressions.</div>
+          <a href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener" class="hl-link"><i class="fa-brands fa-linkedin"></i> View on LinkedIn</a>
+        </div>
+      </div>
+      <div class="hl-card rev">
+        <div class="hl-img" style="background:linear-gradient(135deg,#0f766e,#0d9488)">🏅</div>
+        <div class="hl-body">
+          <div class="hl-date">June 2025</div>
+          <div class="hl-title">Registered Scientist (RSci) — Science Council UK</div>
+          <div class="hl-text">Awarded RSci professional registration through the Royal Society of Chemistry — recognising professional competence, integrity in scientific practice, and ongoing commitment to CPD. 44 reactions, 1,686 impressions.</div>
+          <a href="https://credentials.recognition.rsc.org/" target="_blank" rel="noopener" class="hl-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Credential</a>
+        </div>
+      </div>
+      <div class="hl-card rev">
+        <div class="hl-img" style="background:linear-gradient(135deg,#6d28d9,#7c3aed)">🎙️</div>
+        <div class="hl-body">
+          <div class="hl-date">February 2026</div>
+          <div class="hl-title">International Speaker — COMSATS Islamabad</div>
+          <div class="hl-text">Invited as an international speaker at the 2nd International Symposium on Advances in Protein Function and Design, contributing expertise on computational drug discovery and dengue research.</div>
+          <a href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener" class="hl-link"><i class="fa-brands fa-linkedin"></i> View on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<section id="closing">
+  <div class="cl-inner">
+    <h2>The Story Continues</h2>
+    <p>From the bioinformatics labs of Islamabad to the frontier of AI-driven cancer research in Milan — every chapter has been driven by one constant: the belief that computation can decode biology and improve human health. The next chapter is still being written.</p>
+    <div class="cl-btns">
+      <a href="index.html" class="btn-p"><i class="fa-solid fa-home"></i> Back to Portfolio</a>
+      <a href="https://www.linkedin.com/in/rashid-bioinfo/" target="_blank" rel="noopener" class="btn-o"><i class="fa-brands fa-linkedin"></i> Connect on LinkedIn</a>
+      <a href="mailto:rashid.bioinfo@gmail.com" class="btn-o"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const p = el.scrollTop / (el.scrollHeight - el.clientHeight) * 100;
+    document.getElementById('rp').style.width = Math.min(100, p) + '%';
+    document.getElementById('mnav').classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+
+  // IntersectionObserver for reveals + counters
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      e.target.querySelectorAll('[data-n]').forEach(el => {
+        if(el.dataset.done) return;
+        el.dataset.done = 1;
+        const t = +el.dataset.n, start = Date.now(), dur = 1600;
+        const tick = () => {
+          const ratio = Math.min((Date.now()-start)/dur, 1);
+          const eased = 1 - Math.pow(1-ratio, 3);
+          el.textContent = Math.round(eased*t) + (t>=500?'+':'');
+          if(ratio < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    });
+  }, {threshold: 0.12});
+
+  document.querySelectorAll('.rev,.rev-l,.rev-r').forEach(el => io.observe(el));
+
+  // Side dots
+  const secs = ['hero','ch1','ch2','ch3','ch4','ch5','ch6','ch7','creds'];
+  const dots = document.querySelectorAll('.sdot');
+  dots.forEach((d,i) => d.addEventListener('click', () => {
+    document.getElementById(secs[i])?.scrollIntoView({behavior:'smooth'});
+  }));
+
+  const sio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const i = secs.indexOf(e.target.id);
+      if(i >= 0) dots.forEach((d,j) => d.classList.toggle('on', j===i));
+    });
+  }, {threshold:0.35});
+  secs.forEach(id => { const el = document.getElementById(id); if(el) sio.observe(el); });
+
+  // Typing effect for hero tagline
+  const tagEl = document.getElementById('tagline');
+  const tagText = 'From the bioinformatics labs of Islamabad to the frontier of computational pathology in Milan — a 20-year journey across continents, disciplines, and discoveries.';
+  let ti = 0;
+  const type = () => { if(ti < tagText.length){ tagEl.textContent += tagText[ti++]; setTimeout(type, 20); } };
+  setTimeout(type, 900);
+</script>
+</body>
+</html>

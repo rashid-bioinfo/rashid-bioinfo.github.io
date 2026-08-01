@@ -1,2949 +1,1249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<meta name="generator" content="Hugo 0.159.1">
-    <title>Rashid&#39;s blog</title>
-    
-    
-      
-      
-        
-      
-    
-    <meta name="description" content="Portfolio and personal blog of Rashid Hussain." />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rashid Hussain, Ph.D. — Bioinformatics & Computational Biology</title>
+  <meta name="description" content="Postdoctoral Research Associate at Humanitas Research Hospital. Expert in bioinformatics, computational chemistry, drug discovery, and AI-based predictive tools." />
 
-    <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <style>
+    :root {
+      --p50:  #eff6ff;
+      --p100: #dbeafe;
+      --p200: #bfdbfe;
+      --p400: #60a5fa;
+      --p500: #3b82f6;
+      --p600: #2563eb;
+      --p700: #1d4ed8;
+      --s50:  #f8fafc;
+      --s100: #f1f5f9;
+      --s200: #e2e8f0;
+      --s300: #cbd5e1;
+      --s400: #94a3b8;
+      --s500: #64748b;
+      --s600: #475569;
+      --s700: #334155;
+      --s800: #1e293b;
+      --s900: #0f172a;
+    }
 
-<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/css/layouts/main.css"/>
-<link rel="stylesheet" href="/css/navigators/navbar.css"/>
-<link rel="stylesheet" href="/css/plyr.css"/>
-<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--s800);
+      background: linear-gradient(135deg, var(--s50) 0%, var(--p50) 100%);
+      min-height: 100vh;
+    }
 
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--s100); }
+    ::-webkit-scrollbar-thumb { background: var(--s300); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--s400); }
 
-<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+    /* ─── Utilities ─── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--p600), var(--s600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card {
+      background: #fff;
+      border-radius: .75rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      padding: 1.5rem;
+      border: 1px solid var(--s200);
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.5rem; background: var(--p600); color: #fff;
+      border-radius: .5rem; font-weight: 500; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--p700); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.5rem; border: 1px solid var(--s300);
+      color: var(--s700); border-radius: .5rem; font-weight: 500;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-secondary:hover { background: var(--s50); }
+    .social-links { display: flex; gap: 1rem; align-items: center; }
+    .social-links a {
+      color: var(--s500); font-size: 1.25rem;
+      text-decoration: none; transition: color .2s;
+    }
+    .social-links a:hover { color: var(--p600); }
 
+    /* ─── Section shared ─── */
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-title { font-size: 2.25rem; font-weight: 800; color: var(--s900); margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.0625rem; color: var(--s600); max-width: 640px; margin: 0 auto; }
 
+    /* ─── Navbar ─── */
+    .navbar {
+      position: fixed; top: 0; width: 100%; z-index: 50;
+      transition: all .3s; padding: 0 1.5rem;
+    }
+    .navbar.scrolled {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+    .navbar-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; height: 64px;
+    }
+    .navbar-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .logo-icon {
+      width: 2rem; height: 2rem;
+      background: linear-gradient(135deg, var(--p600), var(--s600));
+      border-radius: .5rem; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .875rem;
+    }
+    .logo-text { font-size: 1.125rem; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    .nav-links a {
+      display: flex; align-items: center; gap: .375rem;
+      padding: .5rem .75rem; border-radius: .5rem;
+      text-decoration: none; color: var(--s600); font-weight: 500;
+      transition: all .2s; font-size: .9375rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--p600); background: var(--p50);
+    }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: .5rem; border-radius: .5rem; color: var(--s600); font-size: 1.25rem;
+    }
+    .mobile-menu {
+      display: none; background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px); border-radius: .75rem;
+      margin-top: .5rem; padding: .5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .625rem .75rem; border-radius: .5rem;
+      text-decoration: none; color: var(--s600); font-weight: 500; transition: all .2s;
+    }
+    .mobile-menu a:hover { color: var(--p600); background: var(--s50); }
 
+    /* ─── Hero ─── */
+    #home { padding-top: 5rem; min-height: 100vh; display: flex; align-items: center; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .hero-subtitle {
+      font-size: 1.125rem; font-weight: 500; color: var(--p600); margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-size: 3.5rem; font-weight: 800; color: var(--s900);
+      line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .hero-bio {
+      font-size: 1.125rem; color: var(--s600); margin-bottom: 2rem; line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .hero-image-wrap { display: flex; justify-content: flex-end; }
+    .profile-ring {
+      width: 320px; height: 320px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--p500), var(--s600)); padding: .5rem;
+    }
+    .profile-ring-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: #fff; padding: 1rem;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .profile-ring-inner img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 72% 32%; }
+    .profile-initials {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: linear-gradient(135deg, var(--p100), var(--s100));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; font-weight: 800; color: var(--p600);
+    }
+    .credentials { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .375rem;
+      font-size: .75rem; font-weight: 600; color: var(--p700);
+      background: var(--p50); border: 1px solid var(--p200);
+      padding: .25rem .625rem; border-radius: 9999px;
+    }
 
-  
+    /* ─── Stats ─── */
+    #stats { background: #fff; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center;
+    }
+    .stat-icon {
+      width: 4rem; height: 4rem;
+      background: linear-gradient(135deg, var(--p100), var(--s100));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .stat-icon i { color: var(--p600); font-size: 1.5rem; }
+    .stat-value { font-size: 2.25rem; font-weight: 800; color: var(--s900); margin-bottom: .375rem; }
+    .stat-label { color: var(--s600); font-size: .9375rem; }
 
-  
-  
-  
-    
-  
-  
+    /* ─── Banner ─── */
+    #banner { padding: 3rem 1.5rem; }
+    .banner-card {
+      max-width: 1280px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--p600), var(--s700));
+      border-radius: 1rem; padding: 2rem; color: #fff;
+    }
+    .banner-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .banner-item { display: flex; align-items: center; gap: .75rem; }
+    .banner-item i { font-size: 1.375rem; opacity: .9; }
+    .banner-label { font-size: .8125rem; opacity: .85; margin-bottom: .125rem; }
+    .banner-value { font-weight: 600; font-size: 1rem; }
 
-  <link rel="icon" type="image/png" href="/images/site/favicon_hu_2124883cdb6dfbd3.png" />
+    /* ─── Skills ─── */
+    #skills { background: #fff; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .skill-item { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .skill-item.visible { opacity:1; transform:translateY(0); }
+    .skill-header { display:flex; justify-content:space-between; margin-bottom:.5rem; }
+    .skill-name { font-weight:500; color:var(--s900); }
+    .skill-pct { font-size:.875rem; color:var(--s600); }
+    .bar-bg { width:100%; height:8px; background:var(--s200); border-radius:9999px; overflow:hidden; }
+    .bar-fill {
+      height:100%;
+      background:linear-gradient(to right, var(--p500), var(--s500));
+      border-radius:9999px; width:0%; transition:width 1.2s ease;
+    }
 
+    /* ─── Experience ─── */
+    #experience { background: linear-gradient(135deg, var(--s50), var(--p50)); }
+    .exp-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+    .subsection-title {
+      font-size:1.5rem; font-weight:700; color:var(--s900);
+      margin-bottom:1.5rem; display:flex; align-items:center; gap:.5rem;
+    }
+    .subsection-title i { color:var(--p600); }
+    .timeline { position:relative; padding-left:1.5rem; }
+    .timeline::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
+      background:linear-gradient(to bottom, var(--p300), var(--s300));
+    }
+    .tl-item {
+      position:relative; margin-bottom:2rem;
+      opacity:0; transform:translateX(-20px); transition:opacity .6s ease,transform .6s ease;
+    }
+    .tl-item.visible { opacity:1; transform:translateX(0); }
+    .tl-dot {
+      position:absolute; left:-1.875rem; top:.375rem;
+      width:.875rem; height:.875rem; border-radius:50%;
+      background:var(--p600); border:2px solid #fff;
+      box-shadow:0 0 0 2px var(--p200);
+    }
+    .tl-dot.edu { background:var(--s600); box-shadow:0 0 0 2px var(--s300); }
+    .tl-date { font-size:.75rem; font-weight:600; color:var(--p600); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.2rem; }
+    .tl-role { font-size:1rem; font-weight:700; color:var(--s900); margin-bottom:.1rem; }
+    .tl-org { font-size:.9375rem; color:var(--s600); margin-bottom:.35rem; }
+    .tl-desc { font-size:.875rem; color:var(--s500); line-height:1.5; }
+    .award-card { display:flex; align-items:center; gap:.75rem; margin-bottom:1rem; }
+    .award-icon {
+      width:2.5rem; height:2.5rem; min-width:2.5rem;
+      background:var(--p50); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .award-icon i { color:var(--p600); }
+    .award-title { font-weight:600; color:var(--s900); }
+    .award-sub { font-size:.875rem; color:var(--s600); }
 
+    /* ─── Publications ─── */
+    #publications { background:#fff; }
+    .pubs-list { display:flex; flex-direction:column; gap:1.5rem; }
+    .pub-card { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .pub-card.visible { opacity:1; transform:translateY(0); }
+    .pub-year {
+      display:inline-block; font-size:.8125rem; font-weight:500;
+      color:var(--p600); background:var(--p50);
+      padding:.25rem .625rem; border-radius:.375rem; margin-bottom:.75rem;
+    }
+    .pub-title { font-size:1.0625rem; font-weight:600; color:var(--s800); margin-bottom:.5rem; line-height:1.4; }
+    .pub-authors { font-size:.875rem; color:var(--s600); margin-bottom:.375rem; }
+    .pub-journal { font-size:.875rem; color:var(--p600); font-style:italic; margin-bottom:.75rem; }
+    .pub-link {
+      display:inline-flex; align-items:center; gap:.375rem;
+      font-size:.875rem; color:var(--p600); text-decoration:none;
+      font-weight:500; transition:color .2s;
+    }
+    .pub-link:hover { color:var(--p700); }
+    .pub-more {
+      text-align:center; padding:1.5rem;
+      background:var(--s50); border-radius:.75rem; color:var(--s600); font-style:italic;
+    }
+    .pub-more a { color:var(--p600); text-decoration:none; font-style:normal; font-weight:500; }
+    .pub-more a:hover { text-decoration:underline; }
 
+    /* ─── Projects ─── */
+    #projects { background:linear-gradient(135deg, var(--s50), var(--p50)); }
+    .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    .proj-card { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .proj-card.visible { opacity:1; transform:translateY(0); }
+    .proj-icon {
+      width:3rem; height:3rem;
+      background:linear-gradient(135deg, var(--p100), var(--s100));
+      border-radius:.75rem; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;
+    }
+    .proj-icon i { color:var(--p600); font-size:1.25rem; }
+    .proj-title { font-size:1.0625rem; font-weight:700; color:var(--s900); margin-bottom:.375rem; }
+    .proj-tag {
+      display:inline-block; font-size:.75rem; font-weight:500;
+      color:var(--p600); background:var(--p50);
+      padding:.125rem .5rem; border-radius:9999px; margin-bottom:.625rem;
+    }
+    .proj-desc { font-size:.9375rem; color:var(--s600); line-height:1.6; }
 
+    /* ─── Connect ─── */
+    #connect { background:#fff; text-align:center; }
+    .cta-title { font-size:2.25rem; font-weight:800; color:var(--s900); margin-bottom:1rem; }
+    .cta-sub { font-size:1.0625rem; color:var(--s600); max-width:600px; margin:0 auto 2.5rem; }
+    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
+    /* ─── Footer ─── */
+    footer { background:var(--s900); color:#fff; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; }
+    .footer-desc { color:rgba(255,255,255,.65); font-size:.9375rem; line-height:1.6; margin-bottom:1.5rem; max-width:400px; }
+    .footer-social a { color:rgba(255,255,255,.6); font-size:1.125rem; text-decoration:none; transition:color .2s; }
+    .footer-social a:hover { color:var(--p400); }
+    .footer-heading { font-size:1.0625rem; font-weight:600; margin-bottom:1.25rem; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.625rem; }
+    .footer-links a, .footer-links span { color:rgba(255,255,255,.6); font-size:.9375rem; text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--p400); }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.1); margin-top:3rem; padding-top:2rem;
+      display:flex; justify-content:space-between; align-items:center;
+      color:rgba(255,255,255,.4); font-size:.875rem;
+    }
 
+    /* ─── Scroll animations ─── */
+    .anim-up    { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+    .anim-left  { opacity:0; transform:translateX(-40px); transition:opacity .8s ease,transform .8s ease; }
+    .anim-right { opacity:0; transform:translateX(40px);  transition:opacity .8s ease,transform .8s ease; }
+    .anim-up.vis, .anim-left.vis, .anim-right.vis { opacity:1; transform:none; }
 
+    /* ─── Responsive ─── */
+    @media (max-width:1024px) {
+      .hero-name { font-size:2.75rem; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .exp-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:768px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-image-wrap { justify-content:center; order:-1; }
+      .hero-name { font-size:2.25rem; }
+      .profile-ring { width:240px; height:240px; }
+      .skills-grid { grid-template-columns:1fr; }
+      .banner-grid { grid-template-columns:1fr; }
+      .projects-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .footer-bottom { flex-direction:column; gap:1rem; text-align:center; }
+      .section-title { font-size:1.875rem; }
+      .tut-grid { grid-template-columns:1fr; }
+    }
 
-<meta property="og:title" content="Rashid&#39;s blog"/>
-<meta property="og:type" content="website"/>
-<meta property="og:description" content="Portfolio and personal blog of Rashid Hussain."/>
-<meta property="og:image" content="https://rashid-bioinfo.github.io/images/author/rashid.png">
-<meta property="og:url" content="https://rashid-bioinfo.github.io/">
-
-    <link rel="stylesheet" href="/css/sections/home.css"/>
-    <link rel="stylesheet" href="/css/sections/about.css"/>
-    <link rel="stylesheet" href="/css/sections/experiences.css"/>
-    <link rel="stylesheet" href="/css/sections/publications.css"/>
-    <link rel="stylesheet" href="/css/sections/education.css"/>
-    <link rel="stylesheet" href="/css/sections/skills.css"/>
-    <link rel="stylesheet" href="/css/sections/projects.css"/>
-    <link rel="stylesheet" href="/css/sections/recent-posts.css"/>
-    <link rel="stylesheet" href="/css/sections/achievements.css"/>
-    <link rel="stylesheet" href="/css/sections/accomplishments.css"/>
-
-    
-    <link rel="stylesheet" href="/css/style.css"/>
-
-    
-
-    
-        
-        
-            
-            
-            
-        
-
-        
-        
-
-        
-        
-    
-
-
-
+    /* ─── Tutorials ─── */
+    .tut-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .tut-card { padding: 0; overflow: hidden; }
+    .tut-thumb { position: relative; }
+    .tut-thumb img { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .tut-badge {
+      position: absolute; bottom: .6rem; right: .6rem;
+      background: rgba(0,0,0,.72); color: #fff;
+      font-size: .72rem; font-weight: 600; padding: .2rem .55rem;
+      border-radius: 999px; display: flex; align-items: center; gap: .3rem;
+    }
+    .tut-body { padding: 1.25rem 1.25rem 1.5rem; }
+    .tut-tag {
+      font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--p600); margin-bottom: .4rem;
+    }
+    .tut-title { font-size: 1.05rem; font-weight: 700; color: var(--s900); margin-bottom: .5rem; line-height: 1.35; }
+    .tut-desc { font-size: .875rem; color: var(--s600); line-height: 1.6; margin-bottom: 1rem; }
+  </style>
 </head>
-  <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
+<body>
 
-    
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="navbar-logo">
+      <div class="logo-icon"><i class="fa-solid fa-dna"></i></div>
+      <span class="logo-text gradient-text">Rashid Hussain</span>
+    </a>
 
+    <ul class="nav-links">
+      <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
+      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+      <li><a href="#publications"><i class="fa-solid fa-book-open"></i> Publications</a></li>
+      <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+      <li><a href="#activities"><i class="fa-solid fa-star"></i> Activities</a></li>
+      <li><a href="#tutorials"><i class="fa-brands fa-youtube"></i> Tutorials</a></li>
+      <li><a href="#connect"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-  
-  
-    
-  
-  
-
-
-
-  
-  
-    
-  
-  
-
-
-
-
-
-
-
-  
-
-
-<nav class="navbar navbar-expand-xl top-navbar initial-navbar" id="top-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      
-        <img src="/images/site/inverted-logo_hu_2124883cdb6dfbd3.png" id="logo" alt="Logo">
-      Rashid&#39;s blog</a>
-    <button
-      class="navbar-toggler navbar-dark"
-      id="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#top-nav-items"
-      aria-label="menu"
-    >
-      <span class="navbar-toggler-icon"></span>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
     </button>
-
-    <div class="collapse navbar-collapse" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#home">Home</a>
-        </li>
-        
-          
-          
-            
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="#about">About</a>
-                </li>
-              
-            
-            
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="#skills">Skills</a>
-                </li>
-              
-            
-            
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="#experiences">Experience</a>
-                </li>
-              
-            
-            
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link" href="#publications">Publications</a>
-                </li>
-              
-            
-            
-              
-              
-            
-            
-              
-              
-            
-            
-              
-              
-            
-            
-              
-              
-            
-            
-              
-              
-            
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                
-                  
-                    
-                    
-                  
-                  
-                    
-                    
-                  
-                  
-                    
-                    
-                  
-                  
-                    
-                    
-                  
-                  
-                    
-                    
-                      <a class="dropdown-item" href="#education">Education</a>
-                    
-                  
-                  
-                    
-                    
-                      <a class="dropdown-item" href="#achievements">Achievements</a>
-                    
-                  
-                  
-                    
-                    
-                      <a class="dropdown-item" href="#projects">Projects</a>
-                    
-                  
-                  
-                    
-                    
-                      <a class="dropdown-item" href="#accomplishments">Accomplishments</a>
-                    
-                  
-                  
-                    
-                    
-                      <a class="dropdown-item" href="#recent-posts">Recent Posts</a>
-                    
-                  
-              </div>
-            </li>
-          
-        
-        
-          <div class="dropdown-divider" id="top-navbar-divider"></div>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" id="blog-link" href="/posts">Posts</a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" id="note-link" href="/notes">Notes</a>
-          </li>
-        
-        
-        
-      </ul>
-    </div>
   </div>
-  
-  
-    <img src="/images/site/main-logo_hu_d55ff5c9caf63efb.png" class="d-none" id="main-logo" alt="Logo">
-  
-  
-    <img src="/images/site/inverted-logo_hu_2124883cdb6dfbd3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
-  
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#publications"><i class="fa-solid fa-book-open"></i> Publications</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+    <a href="#activities"><i class="fa-solid fa-star"></i> Activities</a>
+    <a href="#tutorials"><i class="fa-brands fa-youtube"></i> Tutorials</a>
+    <a href="#connect"><i class="fa-solid fa-envelope"></i> Contact</a>
+  </div>
 </nav>
 
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Text -->
+      <div class="anim-left">
+        <p class="hero-subtitle">
+          <i class="fa-solid fa-flask-vial" style="margin-right:.375rem"></i>
+          Postdoctoral Researcher in Computational Pathology &nbsp;·&nbsp; Humanitas Research Hospital (IRCCS), Milan
+        </p>
+        <h1 class="hero-name">
+          Hi, I'm&nbsp;<span class="gradient-text">Rashid Hussain</span>
+        </h1>
+        <p class="hero-bio">
+          Computational chemist and bioinformatician with a strong foundation in <strong>molecular modelling and virtual screening</strong> — structure-based and ligand-based approaches, docking, and hit identification. Currently applying <strong>computational imaging analysis</strong> to digital pathology: processing Imaging Mass Cytometry (IMC) and spatial omics data to map the tumour microenvironment and extract spatially resolved biomarkers. Experienced in <strong>machine learning and multi-omics integration</strong> (RNA-seq, ATAC-seq, scRNA-seq) and in building reproducible, AI-driven computational pipelines in Python, R, and Bash.
+        </p>
+        <ul style="margin-bottom:1.5rem;color:var(--s600);font-size:.9375rem;line-height:1.9;padding-left:1.25rem">
+          <li>Spatial omics, Imaging Mass Cytometry (IMC) &amp; tumour microenvironment modelling</li>
+          <li>Structure-based virtual screening &amp; computational drug discovery</li>
+          <li>Molecular dynamics simulations &amp; free-energy profiling</li>
+          <li>QSAR &amp; machine learning for bioactivity and ADMET prediction</li>
+          <li>Multi-omics data integration (RNA-seq, ATAC-seq, scRNA-seq)</li>
+          <li>Reproducible &amp; scalable computational pipelines</li>
+        </ul>
+        <div class="hero-buttons">
+          <a href="#connect" class="btn-primary">Connect With Me <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="story.html" class="btn-secondary">
+            <i class="fa-solid fa-book-open"></i> My Story
+          </a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/rashid-bioinfo" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/ch-rashid/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="https://twitter.com/rashidbioinfo" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.researchgate.net/profile/rashid-hussain-6" target="_blank" rel="noopener noreferrer" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a href="https://orcid.org/0000-0002-6586-7241" target="_blank" rel="noopener noreferrer" title="ORCID" style="font-size:1rem;font-weight:700;color:var(--s500);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--p600)'" onmouseout="this.style.color='var(--s500)'">iD</a>
+          <a href="https://www.kaggle.com/rashidbioinfo" target="_blank" rel="noopener noreferrer" title="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
+        </div>
+        <div class="credentials">
+          <span class="badge"><i class="fa-solid fa-certificate"></i> Ph.D. Chemistry</span>
+          <span class="badge"><i class="fa-solid fa-id-badge"></i> RSci</span>
+          <span class="badge"><i class="fa-solid fa-flask"></i> MRSC</span>
+          <span class="badge"><i class="fa-solid fa-globe"></i> Global Talent — Royal Society UK</span>
+        </div>
+      </div>
 
-  
-
-
-
-
-  
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container-fluid home" id="home">
-  <style>
-     
-    #homePageBackgroundImageDivStyled {
-        
-      background-image: url('https://rashid-bioinfo.github.io/images/default-background_hu_cc4994d3a4b5a3ed.jpg');
-    }
-     
-    @media (min-width: 500px) and (max-width: 800px) {  
-      #homePageBackgroundImageDivStyled {   
-          background-image: url('https://rashid-bioinfo.github.io/images/default-background_hu_a7d84aca1f027947.jpg');
-        }
-    }
-    @media (min-width: 801px) and (max-width: 1200px) {  
-      #homePageBackgroundImageDivStyled {   
-          background-image: url('https://rashid-bioinfo.github.io/images/default-background_hu_8592c9de952df1a3.jpg');
-        }
-    }
-    @media (min-width: 1201px) and (max-width: 1500px) {  
-      #homePageBackgroundImageDivStyled {   
-          background-image: url('https://rashid-bioinfo.github.io/images/default-background_hu_a4401dac7410b847.jpg');
-        }
-    }
-    @media (min-width: 1501px) {  
-      #homePageBackgroundImageDivStyled {   
-          background-image: url('https://rashid-bioinfo.github.io/images/default-background.jpg');
-        }
-    }
-    </style>
-    <span class="on-the-fly-behavior"></span>
-  <div
-    id="homePageBackgroundImageDivStyled"
-    class="background container-fluid"
-  ></div>
-  <div class="container content text-center">
-    <img src="/images/author/rashid_hu_dc2e08b403c41400.png"
-      class="rounded-circle mx-auto d-block img-fluid"
-      alt="Author Image"
-    />
-    <h1 class="greeting"> Hi, I am Rashid</h1>
-    
-    <div class="typing-carousel">
-      <span id="ityped" class="ityped"></span>
-      <span class="ityped-cursor"></span>
+      <!-- Profile Image -->
+      <div class="hero-image-wrap anim-right">
+        <div class="profile-ring">
+          <div class="profile-ring-inner">
+            <img
+              src="rashid.jpg"
+              alt="Rashid Hussain, Ph.D."
+              id="profile-img"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <ul id="typing-carousel-data">
-      
-        
-          <li>Registered Scientist (RSci) – Science Council UK</li>
-        
-          <li>Member (MRSC) – Royal Society of Chemistry UK</li>
-        
-          <li>Global Talent – Endorsed by Royal Society UK</li>
-        
-      
-    </ul>
-    
-      
-        
-        
-          
-        
-        <a href="#about" aria-label="Read More - Rashid"><i class="arrow bounce fa fa-chevron-down"></i></a>
-      
-    
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="anim-up">
+        <div class="stat-icon"><i class="fa-solid fa-brain"></i></div>
+        <div class="stat-value">12+</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="anim-up" style="transition-delay:.1s">
+        <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="stat-value">7+</div>
+        <div class="stat-label">Key Projects</div>
+      </div>
+      <div class="anim-up" style="transition-delay:.2s">
+        <div class="stat-icon"><i class="fa-solid fa-microscope"></i></div>
+        <div class="stat-value">7</div>
+        <div class="stat-label">Research Areas</div>
+      </div>
+      <div class="anim-up" style="transition-delay:.3s">
+        <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="stat-value">12+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ BANNER ═══════════════════ -->
+<div id="banner" style="padding:3rem 1.5rem">
+  <div class="banner-card anim-up">
+    <div class="banner-grid">
+      <div class="banner-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <div class="banner-label">Current Location</div>
+          <div class="banner-value">Milan, Italy</div>
+        </div>
+      </div>
+      <div class="banner-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <div class="banner-label">Email</div>
+          <div class="banner-value">rashid.bioinfo@gmail.com</div>
+        </div>
+      </div>
+      <div class="banner-item">
+        <i class="fa-solid fa-award"></i>
+        <div>
+          <div class="banner-label">Current Position</div>
+          <div class="banner-value">Postdoctoral Researcher in Computational Pathology</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-    
-    
-      
-    
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">A multidisciplinary toolkit spanning computational biology, cheminformatics, machine learning, and data science.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">92%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="92"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Bioinformatics Pipelines</span><span class="skill-pct">88%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Linux / HPC</span><span class="skill-pct">88%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Machine Learning (Scikit-learn, Pandas)</span><span class="skill-pct">85%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">R Programming</span><span class="skill-pct">82%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">GROMACS / AMBER (MD Simulation)</span><span class="skill-pct">80%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">RDKit / Cheminformatics</span><span class="skill-pct">78%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="78"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">MATLAB</span><span class="skill-pct">75%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Statistical Analysis</span><span class="skill-pct">85%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Cloud Computing / Git</span><span class="skill-pct">75%</span></div>
+        <div class="bar-bg"><div class="bar-fill" data-lvl="75"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    
-      
-      
-        
-          <div class="container-fluid section-holder d-flex bg-white">
-            
+<!-- ═══════════════════ EXPERIENCE & EDUCATION ═══════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Experience &amp; Education</h2>
+      <p class="section-subtitle">Over a decade of research spanning computational drug discovery, bioinformatics, and AI — across academia and industry.</p>
+    </div>
 
-  
+    <div class="exp-grid">
+      <!-- Work -->
+      <div>
+        <h3 class="subsection-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jan 2026 – Present</div>
+            <div class="tl-role">Postdoctoral Researcher – Computational Pathology</div>
+            <div class="tl-org">Humanitas Research Hospital (IRCCS) &nbsp;·&nbsp; Milan, Italy</div>
+            <div class="tl-desc">Supporting development of the <strong>Sarcoma Microenvironment Score (SMS)</strong>, an AI-based predictive and prognostic tool. Building computational pipelines for microenvironment feature extraction and data integration. Performing statistical and ML analyses for model evaluation.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jul 2025 – Present</div>
+            <div class="tl-role">Visiting Scientist</div>
+            <div class="tl-org">University of Manchester &nbsp;·&nbsp; UK (Remote)</div>
+            <div class="tl-desc">Extending VSpipe for molecular docking; investigating resistance mechanisms in fungal pathogens through structural bioinformatics; performing genome annotation for collagen identification and developing a Python web framework for annotating jellyfish collagen sequences.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jul 2023 – May 2025</div>
+            <div class="tl-role">Bioinformatician</div>
+            <div class="tl-org">Ayass BioScience LLC &nbsp;·&nbsp; TX, USA (Remote)</div>
+            <div class="tl-desc">Developed a pipeline to fetch drug-related data from public databases via APIs. Integrated agentic AI to automate processes and minimise human intervention. Applied bioinformatics and ML techniques for transcriptome analysis.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Nov 2022 – May 2023</div>
+            <div class="tl-role">Software Developer (Contractor)</div>
+            <div class="tl-org">Deep Waters LLC &nbsp;·&nbsp; NY, USA (Remote)</div>
+            <div class="tl-desc">Developed a PyMOL plugin for analysing water thermodynamics using Grid Inhomogeneous Solvation Theory (GIST) via AMBER MD simulations. Deployed a QSAR model for predicting bioactivity against Receptor Tyrosine Kinase.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jan 2022 – Jun 2022</div>
+            <div class="tl-role">Visiting Postgraduate Researcher (IRSIP Fellow)</div>
+            <div class="tl-org">University of Manchester &nbsp;·&nbsp; UK</div>
+            <div class="tl-desc">Developed VSpipe — a cross-platform Python-based application for virtual screening and hit selection — at Prof. Tabernero's lab. Deployed on Mac, Linux and Windows. Published in <em>Int. J. Mol. Sci.</em> (2024). Funded by HEC Pakistan (£6,250 + return tickets).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Feb 2016 – Dec 2019</div>
+            <div class="tl-role">Research Assistant</div>
+            <div class="tl-org">A.Z. Pharmaceuticals Company Ltd. &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Finalised a structure-based drug design pipeline and modelled pharmacophores using ligand-based approaches. Secured cGMP certification from the drug regulatory authority. Advanced HEC-funded industry-university R&amp;D partnerships.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Feb 2015 – Jan 2016</div>
+            <div class="tl-role">Research Associate</div>
+            <div class="tl-org">Lahore University of Management Sciences (LUMS) &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Designed the GUI for the MATLAB-based SPECTRUM toolbox and contributed to the intact mass tuner algorithm. Published in <em>Scientific Reports – Nature</em>. Developed a ligand-based pharmacophore for HCV. Managed lab operations as Lab Chief.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jun 2014 – Jan 2015</div>
+            <div class="tl-role">Research Intern</div>
+            <div class="tl-org">National Center of Bioinformatics, Quaid-e-Azam University &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Proteomics research and bioinformatics tool development. Gained hands-on experience in experimental techniques including zebrafish models for biological assays.</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Education + Awards -->
+      <div>
+        <h3 class="subsection-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot edu"></div>
+            <div class="tl-date">Aug 2017 – Mar 2023</div>
+            <div class="tl-role">Ph.D. Chemistry &nbsp;<span style="font-weight:400;color:var(--p600)">· Magna Cum Laude</span></div>
+            <div class="tl-org">Forman Christian College (A Chartered University) &nbsp;·&nbsp; Lahore, Pakistan</div>
+            <div class="tl-desc">Computational Chemistry, Bioinformatics, Cheminformatics &amp; Software Development. Awarded Higher Honors (Magna Cum Laude).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot edu"></div>
+            <div class="tl-date">Sep 2011 – Jun 2013</div>
+            <div class="tl-role">M.S. Bioinformatics</div>
+            <div class="tl-org">COMSATS University Islamabad &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Bioinformatics, Bash Scripting, Cheminformatics.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot edu"></div>
+            <div class="tl-date">Sep 2006 – Jul 2010</div>
+            <div class="tl-role">B.S. Bioinformatics</div>
+            <div class="tl-org">COMSATS University Islamabad &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Bioinformatics and Phylogenetic data analysis.</div>
+          </div>
+        </div>
 
+        <h3 class="subsection-title" style="margin-top:2.5rem"><i class="fa-solid fa-trophy"></i> Awards &amp; Recognition</h3>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-globe"></i></div>
+          <div><div class="award-title">Global Talent Endorsement</div><div class="award-sub">Royal Society, UK · 2025</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-id-badge"></i></div>
+          <div><div class="award-title">Registered Scientist (RSci)</div><div class="award-sub">Science Council, UK · 2025</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div><div class="award-title">Intellectual Property — BIOPREDICT</div><div class="award-sub">IP Organisation of Pakistan · 2023</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div><div class="award-title">Intellectual Property — MDSimulator</div><div class="award-sub">IP Organisation of Pakistan · 2023</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-flask"></i></div>
+          <div><div class="award-title">Member (MRSC)</div><div class="award-sub">Royal Society of Chemistry · 2023 – Present</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-atom"></i></div>
+          <div><div class="award-title">Member</div><div class="award-sub">American Chemical Society · 2022 – Present</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div><div class="award-title">Certified Carpentries Instructor</div><div class="award-sub">The Carpentries, USA · 2022 – Present</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-star"></i></div>
+          <div><div class="award-title">IRSIP Research Fellowship</div><div class="award-sub">HEC Pakistan · University of Manchester · 2022 · £6,250 + return tickets</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+          <div><div class="award-title">Best Poster Award</div><div class="award-sub">Forman Christian College, Sep 2022</div></div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+          <div><div class="award-title">Best Poster Award</div><div class="award-sub">Institute of Space Technology (IST), Feb 2015</div></div>
+        </div>
+        <div class="card award-card" style="margin-bottom:0">
+          <div class="award-icon"><i class="fa-solid fa-person-running"></i></div>
+          <div><div class="award-title">Marathon Race Winner</div><div class="award-sub">LUMS, 2015</div></div>
+        </div>
 
+        <h3 class="subsection-title" style="margin-top:2.5rem"><i class="fa-solid fa-pen-to-square"></i> Peer Review</h3>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>Molecular Diversity</strong> <span style="color:var(--s500)">— Springer Nature · 2022</span></div>
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>Int. J. Biological Macromolecules</strong> <span style="color:var(--s500)">— Elsevier · 2023</span></div>
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>RSC Advances</strong> <span style="color:var(--s500)">— Royal Society of Chemistry · 2023</span></div>
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>Scientific Reports</strong> <span style="color:var(--s500)">— Springer Nature · 2023</span></div>
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>BMC Chemistry &amp; In Silico Pharmacology</strong> <span style="color:var(--s500)">— Springer Nature · 2023</span></div>
+          <div class="card" style="padding:.75rem 1rem;font-size:.875rem;color:var(--s700)"><strong>Discover Chemistry &amp; BMC Immunology</strong> <span style="color:var(--s500)">— Springer Nature · 2024–2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  
+<!-- ═══════════════════ PUBLICATIONS ═══════════════════ -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Selected Publications</h2>
+      <p class="section-subtitle">12+ peer-reviewed publications and preprints in computational biology, drug discovery, bioinformatics, and AI.</p>
+    </div>
 
+    <div class="pubs-list">
+      <article class="pub-card card">
+        <span class="pub-year" style="background:var(--s100);color:var(--s600)">2026 · Preprint</span>
+        <h3 class="pub-title">Vessel Spatial Analysis (VeSpA): A Tool for Whole Slide Image Segmentation, Morphometry, and QuPath Extension</h3>
+        <p class="pub-authors">Grion G., <strong>Hussain R.</strong>, Colella F.E., Roufail K., Uccella S., Frapolli R., Matteo C., Mintemur Ö., Pennati F., Renne S.L.</p>
+        <p class="pub-journal">Preprint — DOI: 10.64898/2026.06.15.732366</p>
+        <a href="https://doi.org/10.64898/2026.06.15.732366" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> View preprint
+        </a>
+      </article>
 
-<div class="container anchor p-lg-5 about-section" id="about">
-  <div class="row pt-sm-2 pt-md-4 align-self-center">
-    
-    
-     <div class="col-sm-6"> 
-      <h3 class="p-1" style="font-size: 1.6rem; white-space: nowrap; font-weight: 700;">Rashid Hussain, Ph.D., RSci, MRSC</h3>
-      
-      <h5 class="p-1">
-        Postdoctoral Research Associate<br>
-        
-        <a href="https://www.humanitas.it" title="Humanitas Research Hospital." target="_blank" rel="noopener">Humanitas Research Hospital.</a>
-        
-      </h5>
-      
-      <p class="p-1 text-justify">
-        I am a Postdoctoral Research Associate at Humanitas Research Hospital, Italy, working at the interface of bioinformatics, computational biology, and computational chemistry. My work involves developing computational tools and workflows to support development of the Sarcoma Microenvironment Score (SMS), an AI-based predictive and prognostic tool, build and maintain computational pipelines for microenvironment feature extraction and data integration, and perform statistical and machine learning analyses for model evaluation and reporting.
-      </p>
-      <div class="text-container ml-auto">
-        <ul class="social-link d-flex">
-          
-          <li>
-            
-              <a href="mailto:rashid.bioinfo@gmail.com" title="Email" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://github.com/rashid-bioinfo" title="Github" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ&amp;hl=en" title="Google Scholar" target="_blank" rel="noopener"><i class="fab fa-google"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://www.researchgate.net/profile/Rashid-Hussain-6" title="ResearchGate" target="_blank" rel="noopener"><i class="fab fa-researchgate"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://www.linkedin.com/in/ch-rashid/" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://twitter.com/rashidbioinfo" title="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-            
-          </li>
-          
-          <li>
-            
-              <a href="https://web.facebook.com/rashid.bioinfo/" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-            
-          </li>
-          
+      <article class="pub-card card">
+        <span class="pub-year">2024</span>
+        <h3 class="pub-title">VSpipe-GUI: An Interactive Graphical User Interface for Virtual Screening and Hit Selection</h3>
+        <p class="pub-authors"><strong>Hussain R.</strong>, Hackett A.S., Álvarez-Carretero S., Tabernero L.</p>
+        <p class="pub-journal">International Journal of Molecular Sciences, 25(4), 2002</p>
+        <a href="https://doi.org/10.3390/ijms25042002" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> DOI: 10.3390/ijms25042002
+        </a>
+      </article>
+
+      <article class="pub-card card">
+        <span class="pub-year">2023</span>
+        <h3 class="pub-title">Computational Medicinal Chemistry Applications to Target Asian-Prevalent Strain of Hepatitis C Virus</h3>
+        <p class="pub-authors"><strong>Hussain R.</strong>, Haider Z., Khalid H., Fatmi M.Q., Carradori S., Cataldi A., Zara S.</p>
+        <p class="pub-journal">RSC Advances, 13(43), 30052–30070</p>
+        <a href="https://doi.org/10.1039/D3RA04622B" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> DOI: 10.1039/D3RA04622B
+        </a>
+      </article>
+
+      <article class="pub-card card">
+        <span class="pub-year">2022</span>
+        <h3 class="pub-title">HCV Genotype-Specific Drug Discovery Through Structure-Based Virtual Screening</h3>
+        <p class="pub-authors"><strong>Hussain R.</strong>, Khalid H., Fatmi M.Q.</p>
+        <p class="pub-journal">Pure and Applied Chemistry</p>
+        <a href="https://doi.org/10.1515/pac-2021-1104" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> DOI: 10.1515/pac-2021-1104
+        </a>
+      </article>
+
+      <article class="pub-card card">
+        <span class="pub-year">2021</span>
+        <h3 class="pub-title">Molecular Modelling of Serine Protease NS3-4A Genotype 3a as a Potential Drug Target of Hepatitis C Virus</h3>
+        <p class="pub-authors"><strong>Hussain R.</strong>, Khalid H., Fatmi M.Q.</p>
+        <p class="pub-journal">Journal of Computational Biophysics and Chemistry, 20(6), 631–639</p>
+        <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Read full article
+        </a>
+      </article>
+
+      <article class="pub-card card">
+        <span class="pub-year">2020</span>
+        <h3 class="pub-title">Virtual Screening of Piperidine-Based Small Molecules Against COVID-19</h3>
+        <p class="pub-authors">Khalid H., <strong>Hussain R.</strong>, Hafeez A.</p>
+        <p class="pub-journal">Lab-in-Silico, 1(2), 49–58</p>
+        <a href="https://doi.org/10.22034/lins20012050" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> DOI: 10.22034/lins20012050
+        </a>
+      </article>
+
+      <article class="pub-card card">
+        <span class="pub-year">2019</span>
+        <h3 class="pub-title">SPECTRUM: A MATLAB Toolbox for Proteoform Identification from Top-Down Proteomics Data</h3>
+        <p class="pub-authors">Basharat A.R., Iman K., Bibi Z., <strong>Hussain R.</strong>, et al.</p>
+        <p class="pub-journal">Scientific Reports — Nature, 9(1), 1–14</p>
+        <a href="https://doi.org/10.1038/s41598-019-47724-1" target="_blank" rel="noopener noreferrer" class="pub-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> DOI: 10.1038/s41598-019-47724-1
+        </a>
+      </article>
+
+      <div class="pub-more">
+        <i class="fa-solid fa-book" style="color:var(--p500);margin-right:.5rem"></i>
+        +6 more peer-reviewed publications &nbsp;·&nbsp;
+        <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ" target="_blank" rel="noopener noreferrer">
+          View all on Google Scholar <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Open-source tools and research software at the intersection of bioinformatics, cheminformatics, and machine learning.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-filter"></i></div>
+        <div class="proj-title">VSpipe-GUI</div>
+        <span class="proj-tag">Python · Bash · Molecular Docking</span>
+        <p class="proj-desc">Interactive graphical interface for virtual screening and hit selection, running on Windows, Mac, and Linux. Covers receptor preparation, compound library prep, virtual screening, results visualization and filtering. Published in <em>Int. J. Mol. Sci.</em> (2025).</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="proj-title">BioPredict</div>
+        <span class="proj-tag">Python · Machine Learning · Streamlit</span>
+        <p class="proj-desc">ML-based QSAR web application predicting bioactivity against Receptor Tyrosine Kinase using ChEMBL data. Built with Scikit-learn, RDKit fingerprints, and Streamlit for interactive deployment. Co-developed with Yasir Waheed.</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-atom"></i></div>
+        <div class="proj-title">MD Simulator</div>
+        <span class="proj-tag">Python · GROMACS · GUI</span>
+        <p class="proj-desc">Python-based graphical interface for macromolecular simulations on GROMACS — automates preparation, solvation, ionization, energy minimization, and full MD simulation runs. Co-developed with Yasir Waheed.</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-chart-bar"></i></div>
+        <div class="proj-title">SPECTRUM</div>
+        <span class="proj-tag">MATLAB · Proteomics</span>
+        <p class="proj-desc">A comprehensive MATLAB toolbox for proteoform identification from top-down proteomics data — statistical profiling, peptide analysis, and visualization. Published in <em>Scientific Reports</em> (Nature, 2019).</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-virus"></i></div>
+        <div class="proj-title">COVID-19 Bioactivity Predictor</div>
+        <span class="proj-tag">Python · QSAR · Streamlit</span>
+        <p class="proj-desc">QSAR model and Streamlit web application for predicting inhibitor potency against SARS-CoV-2 Replicase Polyprotein. Uses PubChem fingerprints and Random Forest for end-to-end bioactivity (pIC50) prediction.</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-cube"></i></div>
+        <div class="proj-title">PyMOL Script Repository</div>
+        <span class="proj-tag">Python · PyMOL · Structural Biology</span>
+        <p class="proj-desc">Collection of PyMOL scripts for structural analysis, visualisation, and automation — covering protein structure inspection, binding site analysis, and publication-quality molecular rendering.</p>
+      </div>
+
+      <div class="proj-card card">
+        <div class="proj-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="proj-title">VSpipe-Agent</div>
+        <span class="proj-tag">Python · ADK · AI Agents · Virtual Screening</span>
+        <p class="proj-desc">AI agent built with Google's Agent Development Kit (ADK) for structure-based virtual screening — implements real Lipinski filtering and AutoDock Vina docking, adapted from VSpipe-GUI. Developed as a Kaggle 5-Day AI Agents capstone (Agents for Good).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROFESSIONAL ACTIVITIES ═══════════════════ -->
+<section id="activities" style="background:#fff">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Professional Activities</h2>
+      <p class="section-subtitle">Teaching, training, certifications, memberships, and contributions to the scientific community.</p>
+    </div>
+
+    <div class="exp-grid">
+      <!-- Teaching & Training -->
+      <div>
+        <h3 class="subsection-title"><i class="fa-solid fa-chalkboard-user"></i> Teaching &amp; Training</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Oct 2022 – Present</div>
+            <div class="tl-role">Certified Carpentries Instructor</div>
+            <div class="tl-org">The Carpentries, USA (Remote)</div>
+            <div class="tl-desc">Delivered Software Carpentry workshops (Shell, Git, Python) internationally — Co-Instructor at University of Vermont (May 2025, 24h) and IRTA Spain (May 2025, 24h). Teaching Assistant at Brac University, Bangladesh (HPC, 64h, Oct 2021–Jan 2022).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Mar 2019 – Feb 2020</div>
+            <div class="tl-role">Visiting Faculty</div>
+            <div class="tl-org">Minhaj University &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Taught Bioinformatics — 30 lectures, 16 labs, wrote and graded exams.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Feb 2015 – Jan 2016</div>
+            <div class="tl-role">Teaching Assistant</div>
+            <div class="tl-org">Lahore University of Management Sciences (LUMS) &nbsp;·&nbsp; Pakistan</div>
+            <div class="tl-desc">Computational Biology (16 labs) and Protein Informatics (12 labs) — wrote and graded lab exams and assignments.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">2020 – 2021</div>
+            <div class="tl-role">Online Tutorial Series (Outreach)</div>
+            <div class="tl-org">YouTube / Self-Published</div>
+            <div class="tl-desc">Created and published online tutorials covering: <strong>Managing References &amp; Bibliography</strong> (Mendeley), <strong>Homology Modeling</strong> (MODELLER), and <strong>Computer-Aided Drug Design / Docking</strong> (AutoDock) — aimed at making computational tools accessible to early-career researchers.</div>
+          </div>
+        </div>
+
+        <h3 class="subsection-title" style="margin-top:2.5rem"><i class="fa-solid fa-kaggle fa-brands"></i><i class="fa-solid fa-database"></i> Data Science &amp; AI</h3>
+        <div class="card" style="padding:1.25rem">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+            <div style="width:2.5rem;height:2.5rem;background:var(--p50);border-radius:.5rem;display:flex;align-items:center;justify-content:center">
+              <i class="fa-solid fa-chart-bar" style="color:var(--p600)"></i>
+            </div>
+            <div>
+              <div style="font-weight:600;color:var(--s900)">Kaggle</div>
+              <div style="font-size:.875rem;color:var(--s500)">kaggle.com/rashidbioinfo</div>
+            </div>
+          </div>
+          <p style="font-size:.9rem;color:var(--s600);line-height:1.6">Active on Kaggle with 5 badges. Completed the <strong>5-Day AI Agents Intensive</strong> with Google (2025), producing a capstone agent (VSpipe-Agent) integrating AutoDock Vina with ADK for virtual screening. 1 published writeup.</p>
+          <a href="https://www.kaggle.com/rashidbioinfo" target="_blank" rel="noopener noreferrer" class="pub-link" style="margin-top:.75rem;display:inline-flex">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Kaggle Profile
+          </a>
+        </div>
+      </div>
+
+      <!-- Certifications & Memberships -->
+      <div>
+        <h3 class="subsection-title"><i class="fa-solid fa-certificate"></i> Certifications &amp; Credentials</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jun 2025</div>
+            <div class="tl-role">Registered Scientist (RSci)</div>
+            <div class="tl-org">Science Council, UK</div>
+            <div class="tl-desc">Awarded after peer-reviewed assessment of professional competence and commitment to continuing professional development (CPD).</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Oct 2022</div>
+            <div class="tl-role">Certified Carpentries Instructor</div>
+            <div class="tl-org">The Carpentries, USA</div>
+            <div class="tl-desc">Certified to teach Software Carpentry workshops in Shell, Git, Python, and R — an internationally recognised instructor training programme.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jul 2022</div>
+            <div class="tl-role">The Unix Workbench</div>
+            <div class="tl-org">Johns Hopkins University (Coursera)</div>
+            <div class="tl-desc">Shell scripting, Linux command-line tools, and reproducible computing environments.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jun 2022</div>
+            <div class="tl-role">What is Data Science?</div>
+            <div class="tl-org">IBM (Coursera)</div>
+            <div class="tl-desc">Foundations of data science methodology and practice.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Jan 2020</div>
+            <div class="tl-role">Molecular Modeling in Drug Discovery</div>
+            <div class="tl-org">Schrödinger</div>
+            <div class="tl-desc">Advanced training in structure-based drug design, molecular docking, and free-energy calculations using Schrödinger Suite.</div>
+          </div>
+        </div>
+
+        <h3 class="subsection-title" style="margin-top:2.5rem"><i class="fa-solid fa-id-card"></i> Professional Memberships</h3>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-flask"></i></div>
+          <div>
+            <div class="award-title">Member (MRSC)</div>
+            <div class="award-sub">Royal Society of Chemistry · Oct 2023 – Present</div>
+          </div>
+        </div>
+        <div class="card award-card">
+          <div class="award-icon"><i class="fa-solid fa-atom"></i></div>
+          <div>
+            <div class="award-title">Member (ACS)</div>
+            <div class="award-sub">American Chemical Society · May 2022 – Present</div>
+          </div>
+        </div>
+        <div class="card award-card" style="margin-bottom:0">
+          <div class="award-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div>
+            <div class="award-title">Certified Instructor</div>
+            <div class="award-sub">The Carpentries · Oct 2022 – Present</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TUTORIALS ═══════════════════ -->
+<section id="tutorials">
+  <div class="container">
+    <div class="section-header anim-up">
+      <h2 class="section-title">Tutorials &amp; Outreach</h2>
+      <p class="section-subtitle">Open-access video tutorial series on computational biology tools — aimed at making these techniques accessible to early-career researchers.</p>
+    </div>
+
+    <div class="tut-grid">
+
+      <!-- Mendeley -->
+      <article class="card tut-card anim-up">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/55Y-25O4EE8/hqdefault.jpg" alt="Managing References thumbnail" loading="lazy" />
+          <span class="tut-badge"><i class="fa-solid fa-film"></i>&nbsp;2 videos</span>
+        </div>
+        <div class="tut-body">
+          <div class="tut-tag">Reference Management</div>
+          <h3 class="tut-title">Managing References &amp; Bibliography</h3>
+          <p class="tut-desc">Hands-on webinar covering Mendeley setup through inserting and managing references and bibliography in theses and manuscripts.</p>
+          <a href="https://www.youtube.com/watch?v=55Y-25O4EE8" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <i class="fa-brands fa-youtube"></i> Watch Series
+          </a>
+        </div>
+      </article>
+
+      <!-- Homology Modeling -->
+      <article class="card tut-card anim-up">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/la-ud1Up3AY/hqdefault.jpg" alt="Homology Modeling thumbnail" loading="lazy" />
+          <span class="tut-badge"><i class="fa-solid fa-film"></i>&nbsp;6 videos</span>
+        </div>
+        <div class="tut-body">
+          <div class="tut-tag">Structural Bioinformatics</div>
+          <h3 class="tut-title">Homology Modeling with MODELLER</h3>
+          <p class="tut-desc">Step-by-step 5-part series on protein homology modeling using MODELLER — from sequence alignment to final model validation.</p>
+          <a href="https://www.youtube.com/watch?v=la-ud1Up3AY" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <i class="fa-brands fa-youtube"></i> Watch Series
+          </a>
+        </div>
+      </article>
+
+      <!-- CADD / Docking -->
+      <article class="card tut-card anim-up">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/UooipRybzXs/hqdefault.jpg" alt="CADD Docking thumbnail" loading="lazy" />
+          <span class="tut-badge"><i class="fa-solid fa-film"></i>&nbsp;11 videos</span>
+        </div>
+        <div class="tut-body">
+          <div class="tut-tag">Drug Discovery</div>
+          <h3 class="tut-title">Molecular Docking &amp; CADD</h3>
+          <p class="tut-desc">Comprehensive 10-part series on computer-aided drug design and molecular docking using AutoDock Tools — from installation to results analysis.</p>
+          <a href="https://www.youtube.com/watch?v=UooipRybzXs" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <i class="fa-brands fa-youtube"></i> Watch Series
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONNECT ═══════════════════ -->
+<section id="connect">
+  <div class="container">
+    <h2 class="cta-title anim-up">Ready to Collaborate?</h2>
+    <p class="cta-sub anim-up">
+      Open to research collaborations, bioinformatics consulting, and discussions on computational biology, drug discovery, or AI in biomedicine.
+    </p>
+    <div class="cta-btns anim-up">
+      <a href="mailto:rashid.bioinfo@gmail.com" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Send an Email
+      </a>
+      <a href="https://linkedin.com/in/ch-rashid/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1rem">
+          <div style="width:2rem;height:2rem;background:linear-gradient(135deg,var(--p600),var(--s700));border-radius:.5rem;display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-dna" style="color:#fff;font-size:.875rem"></i>
+          </div>
+          <span style="font-size:1.125rem;font-weight:700">Rashid Hussain, Ph.D.</span>
+        </div>
+        <p class="footer-desc">
+          Postdoctoral Researcher in Computational Pathology at Humanitas Research Hospital (IRCCS), Italy. Registered Scientist (RSci) &amp; Member of the Royal Society of Chemistry (MRSC), endorsed as Global Talent by the Royal Society UK. Working at the interface of spatial omics, multi-omics integration, and computational drug discovery.
+        </p>
+        <div class="social-links footer-social">
+          <a href="https://github.com/rashid-bioinfo" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/ch-rashid/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://scholar.google.com/citations?user=TaIGyDMAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="https://twitter.com/rashidbioinfo" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.researchgate.net/profile/rashid-hussain-6" target="_blank" rel="noopener noreferrer" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a href="https://orcid.org/0000-0002-6586-7241" target="_blank" rel="noopener noreferrer" title="ORCID" style="color:rgba(255,255,255,.6);font-size:.875rem;font-weight:700;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='rgba(255,255,255,.6)'">iD</a>
+          <a href="https://www.kaggle.com/rashidbioinfo" target="_blank" rel="noopener noreferrer" title="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#connect">Contact</a></li>
         </ul>
       </div>
-      
-      <a href="/files/CV.pdf" title="My resume" target="#"
-        ><button class="btn btn-dark">My resume</button></a
-      >
-      
-    </div>
-    
-    <div class="col-sm-6 pt-5 pl-md-4 pl-sm-3 pt-sm-0">
-      <div class="row">
-        
-          <div class="col-6 col-lg-4 p-2">
 
-    
-    <div class="">
-      <a href="https://www.credly.com/earner/earned/badge/40b4bbdf-7369-446e-87d5-7d005c30826e" target="_blank" rel="noopener noreferrer">
-       <img src="https://images.credly.com/size/340x340/images/5fc2d535-e716-46c4-881a-f4822b8da0e5/Cognitive_Class_-_What_is_Data_Science.png" alt="IBM - What is Data Science certificate" />
-      </a>
-    </div>
-
-</div>
-
-        
-          <div class="col-6 col-lg-4 p-2">
-
-    
-    <div class="">
-      <a href="https://badgr.com/public/assertions/Ws5fieddT5KCgH-hdYR9cQ?action=download" target="_blank" rel="noopener noreferrer">
-       <img src="images/sections/certificates/schrodinger-badge.png" alt="Introduction to Molecular Modeling in Drug Discovery certificate" />
-      </a>
-    </div>
-
-</div>
-
-        
-          <div class="col-6 col-lg-4 p-2">
-
-    
-    
-    
-    <div class="circular-progress blue">
-    <span class="circular-progress-left">
-        <span
-        class="circular-progress-bar circular-progress-percentage-85"
-        
-        ></span>
-    </span>
-    <span class="circular-progress-right">
-        <span
-        class="circular-progress-bar"
-        
-        ></span>
-    </span>
-    <div class="circular-progress-value">Leadership</div>
-    </div>
-
-</div>
-
-        
-          <div class="col-6 col-lg-4 p-2">
-
-    
-    
-    
-    <div class="circular-progress yellow">
-    <span class="circular-progress-left">
-        <span
-        class="circular-progress-bar circular-progress-percentage-90"
-        
-        ></span>
-    </span>
-    <span class="circular-progress-right">
-        <span
-        class="circular-progress-bar"
-        
-        ></span>
-    </span>
-    <div class="circular-progress-value">Team Work</div>
-    </div>
-
-</div>
-
-        
-          <div class="col-6 col-lg-4 p-2">
-
-    
-    
-    
-    <div class="circular-progress green">
-    <span class="circular-progress-left">
-        <span
-        class="circular-progress-bar circular-progress-percentage-90"
-        
-        ></span>
-    </span>
-    <span class="circular-progress-right">
-        <span
-        class="circular-progress-bar"
-        
-        ></span>
-    </span>
-    <div class="circular-progress-value">Hard Working</div>
-    </div>
-
-</div>
-
-        
-          <div class="col-6 col-lg-4 p-2">
-
-    
-    
-    
-    <div class="circular-progress pink">
-    <span class="circular-progress-left">
-        <span
-        class="circular-progress-bar circular-progress-percentage-85"
-        
-        ></span>
-    </span>
-    <span class="circular-progress-right">
-        <span
-        class="circular-progress-bar"
-        
-        ></span>
-    </span>
-    <div class="circular-progress-value">Fast Learner</div>
-    </div>
-
-</div>
-
-        
-        
-        
-        
-      </div>
-    </div>
-  </div>
-</div>
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-dimmed">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 skills-section">
-  
-    <h1 class="text-center">
-        <span id="skills"></span>Skills</h1>
-  
-  <div class="container d-flex-block">
-    <div class="row" id="primary-skills">
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/python_hu_418dac9d0d730905.png" alt="Python" />
-          <h5 class="card-title">Python</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">I recently developed an open-source Python-based virtual screening toolkit with a cross-platform user-interactive GUI interface at The University of Manchester.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/linux_hu_350e3fb4fdfa775b.png" alt="Linux" />
-          <h5 class="card-title">Linux</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Using as the main operating system. Capable of writing bash/shell scripts.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/rlogo_hu_eaa8d6be254f5884.png" alt="R" />
-          <h5 class="card-title">R</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Know basic R programming. Use to write small codes for accomplishing basic tasks.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/git_hu_b0279c15d4e1f0d4.png" alt="Git" />
-          <h5 class="card-title">Git</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Mostly, use Github for version control of the software program.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/cloud_hu_a93290a444aa3a6a.png" alt="Cloud Computing" />
-          <h5 class="card-title">Cloud Computing</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">During my doctoral project, I ran virtual screening and molecular dynamics jobs using cloud computing.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/matlab_hu_bb7cf8b17065348a.png" alt="MATLAB" />
-          <h5 class="card-title">MATLAB</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">I was part of the developement team of the project &lsquo;SPECTRUM: A MATLAB Toolbox for Identifying Proteins from Top-down Proteomics Data&rsquo;.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/c&#43;&#43;_hu_fadbf1a3584570e0.png" alt="C&#43;&#43;" />
-          <h5 class="card-title">C&#43;&#43;</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Know basic C/C++ programming. Used for contest programming and problem solving.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/gro_hu_c2f8aabed7319bc0.png" alt="GROMACS" />
-          <h5 class="card-title">GROMACS</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">I have run MD Simulations of Holo-enzyme and Protein-Ligand complex at 50ns and 100ns during my doctoral studies.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/pymol_hu_64a4a9f0f452a7c0.png" alt="PyMOL" />
-          <h5 class="card-title">PyMOL</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Used PyMOL for visualizing macromolecules and studying protein-ligand interactions. Also used its plugin autodock.py for virtual screening.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/rdkit_hu_d53526a49068df3c.png" alt="RDKit" />
-          <h5 class="card-title">RDKit</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Used RDKit for calculating physicochemical descriptors of compounds retreived from PubChem.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/sql_hu_5465b62d84deabd5.png" alt="SQL" />
-          <h5 class="card-title">SQL</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">Know basics of storing, retreiving, and updating of the data from the databases.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/pandas_hu_63e70a8d6d737f6a.png" alt="Pandas" />
-          <h5 class="card-title">Pandas</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">I have used pandas for reading and writing data into the csv files fetched from PubChem.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
-  <a class="skill-card-link" >
-    <div class="card">
-      <div class="card-head d-flex">
-        
-          
-          
-          
-            
-          
-        
-          <img class="card-img-xs" src="/images/sections/skills/scikit_hu_41aad08811f95cc0.png" alt="Scikit-learn" />
-          <h5 class="card-title">Scikit-learn</h5>
-        
-      </div>
-      <div class="card-body">
-        <p class="card-text">I have used sklearn&rsquo;s model selection module for splitting train-test data and applying RandomForest Regression. It was used in my project for building COVID QSAR model using machine learning.</p>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-white">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 experiences-section">
-  
-    <h1 class="text-center">
-        <span id="experiences"></span>Experience</h1>
-  
-
-  <div class="container timeline text-justify">
-   
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">1</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Postdoctoral Researcher</h5>
-        <h6>Humanitas Research Hospital</h6>
-        
-        <p class="text-muted">Jan 2026 - Present,
-            Italy
-        </p>
-    </div>
-    
-    <p>Computational pathology, bioinformatics, and AI-driven research</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Support development of the Sarcoma Microenvironment Score (SMS), an AI-based predictive and prognostic tool</li>
-    
-        <li>Build and maintain computational pipelines for microenvironment feature extraction and data integration</li>
-    
-        <li>Perform statistical and machine learning analyses for model evaluation and reporting</li>
-    
-    </ul>
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        <h5>University of Manchester (UoM)</h5>
-
-        
-        
-        
-        <p class="text-muted">
-            Jan 2022 - Present,
-            UK
-        </p>
-        
-        <p>Computational chemistry and bioinformatics research</p>
-    </div>
-    
-    <div class="positions">
-    
-        <h6 class="designation">Visiting Academic</h6>
-        <p class="text-muted">Jul 2025 -  Present </p>
-        
-        <ul class="justify-content-around">
-        
-            <li>Develop and extend a Python-based virtual screening GUI (VSpipe) for molecular docking</li>
-        
-            <li>Perform structure-based analyses, including molecular docking and protein modelling, to characterise drug–target interactions and resistance-associated variations</li>
-        
+      <!-- Research Areas -->
+      <div>
+        <h3 class="footer-heading">Research Areas</h3>
+        <ul class="footer-links">
+          <li><span>Spatial Omics &amp; IMC</span></li>
+          <li><span>Multi-Omics Integration</span></li>
+          <li><span>Bioinformatics Pipelines</span></li>
+          <li><span>Computational Drug Discovery</span></li>
+          <li><span>Machine Learning / AI</span></li>
+          <li><span>QSAR &amp; ADMET Modelling</span></li>
+          <li><span>Molecular Dynamics</span></li>
         </ul>
-    
-        <h6 class="designation">Visiting Postgraduate Researcher</h6>
-        <p class="text-muted">Jan 2022 -  Jun 2022 </p>
-        
-        <ul class="justify-content-around">
-        
-            <li>Developed VSpipe, a cross-platform Python application for virtual screening and hit selection</li>
-        
-            <li>Deployed tool across Mac, Linux, and Windows environments</li>
-        
-            <li>Contributed to publication in International Journal of Molecular Sciences</li>
-        
-        </ul>
-    
-    </div>
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">2</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">3</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Bioinformatician</h5>
-        <h6>Ayass BioScience LLC</h6>
-        
-        <p class="text-muted">Jul 2023 - May 2025,
-            USA (Remote)
-        </p>
-    </div>
-    
-    <p>Bioinformatics and AI-driven drug data workflows</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Developed pipelines to fetch drug data from public databases via APIs</li>
-    
-        <li>Integrated agentic AI to automate workflows and reduce manual intervention</li>
-    
-        <li>Applied bioinformatics and machine learning techniques for transcriptome analysis</li>
-    
-    </ul>
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Software Developer (Contractor)</h5>
-        <h6>Deep Waters LLC</h6>
-        
-        <p class="text-muted">Nov 2022 - May 2023,
-            USA (Remote)
-        </p>
-    </div>
-    
-    <p>Computational chemistry and software development</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Developed a PyMOL plugin for water thermodynamics analysis using GIST and AMBER</li>
-    
-        <li>Built and deployed a QSAR model for predicting bioactivity against receptor tyrosine kinases</li>
-    
-    </ul>
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">4</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">5</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Research Assistant</h5>
-        <h6>A.Z. Pharmaceuticals Company Limited</h6>
-        
-        <p class="text-muted">Feb 2016 - Dec 2019,
-            Pakistan
-        </p>
-    </div>
-    
-    <p>Drug discovery and industrial research</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Developed structure-based drug design pipelines and ligand-based pharmacophore models</li>
-    
-        <li>Secured cGMP certification through regulatory compliance work</li>
-    
-        <li>Collaborated with universities to support joint research initiatives</li>
-    
-    </ul>
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Research Associate</h5>
-        <h6>Lahore University of Management Sciences (LUMS)</h6>
-        
-        <p class="text-muted">Feb 2015 - Jan 2016,
-            Pakistan
-        </p>
-    </div>
-    
-    <p>Bioinformatics and computational biology research</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Designed GUI for MATLAB-based SPECTRUM toolbox and contributed to protein identification algorithms</li>
-    
-        <li>Developed ligand-based pharmacophore models for HCV drug discovery</li>
-    
-        <li>Managed lab operations and contributed to manuscript preparation and publication</li>
-    
-    </ul>
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">6</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle font-weight-bold">7</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="experience-entry-heading">
-        
-        
-        <h5>Research Intern</h5>
-        <h6>National Center of Bioinformatics, Quaid-e-Azam University</h6>
-        
-        <p class="text-muted">Jun 2014 - Jan 2015,
-            Pakistan
-        </p>
-    </div>
-    
-    <p>Bioinformatics and experimental research</p>
-    
-    
-    <h6 class="text-muted">Responsibilities:</h6>
-    <ul class="justify-content-around">
-    
-        <li>Gained hands-on experience in experimental techniques including zebrafish models</li>
-    
-        <li>Applied bioinformatics tools to identify conserved genomic regions</li>
-    
-    </ul>
-    
-</div>
-
-
-
-       </div>
-     
-     
-   
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-dimmed">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 publications-section">
-  
-    <h1 class="text-center">
-        <span id="publications"></span>Publications</h1>
-  
-
-  <div class="container timeline-pub text-justify">
-   
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">1</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>VSpipe-GUI, An Interactive Graphical User Interface for Virtual Screening and Hit Selection</h5>
-        <h6><a href=https://doi.org/10.3390/ijms25042002 title="International Journal of Molecular Sciences (2024)" target="_blank" rel="noopener">International Journal of Molecular Sciences (2024)</a></h6>
-        
-        <p class="text-muted">2024 - DOI: 10.3390/ijms25042002,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p><strong>Hussain, R.</strong>, Hackett, A.S., Álvarez-Carretero, S., Tabernero, L.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Computational medicinal chemistry applications to target Asian-prevalent strain of hepatitis C virus</h5>
-        <h6><a href=https://doi.org/10.1039/D3RA04622B title="RSC Advances (2023)" target="_blank" rel="noopener">RSC Advances (2023)</a></h6>
-        
-        <p class="text-muted">2023 - DOI: 10.1039/D3RA04622B,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p><strong>Hussain, R.</strong>, Haider, Z., Khalid, H., Fatmi, M. Q., Carradori, S., Cataldi, A., Zara, S.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">2</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">3</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>HCV genotype-specific drug discovery through structure-based virtual screening</h5>
-        <h6><a href=https://doi.org/10.1515/pac-2021-1104 title="Pure and Applied Chemistry (2022)" target="_blank" rel="noopener">Pure and Applied Chemistry (2022)</a></h6>
-        
-        <p class="text-muted">2022 - DOI: 10.1515/pac-2021-1104,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p><strong>Hussain, R.</strong>, Khalid, H., Fatmi, M. Q.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Molecular modelling approach of Serine Protease NS3-4A genotype 3a as a potential drug target of Hepatitis C Virus</h5>
-        <h6><a href=https://www.worldscientific.com/doi/abs/10.1142/S273741652150037X title="Journal of Computational Biophysics and Chemistry (2021)" target="_blank" rel="noopener">Journal of Computational Biophysics and Chemistry (2021)</a></h6>
-        
-        <p class="text-muted">2021 - Vol. 20, No. 06, pp. 631-639,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p><strong>Hussain, R.</strong>, Khalid, H., Fatmi, M. Q.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">4</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">5</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Virtual screening of piperidine-based small molecules against COVID-19</h5>
-        <h6><a href=https://doi.org/10.22034/lins20012050 title="Lab-in-Silico (2020)" target="_blank" rel="noopener">Lab-in-Silico (2020)</a></h6>
-        
-        <p class="text-muted">2020 - DOI: 10.22034/lins20012050,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p>Khalid, H., <strong>Hussain, R.</strong>, Hafeez, A.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>SPECTRUM - A MATLAB toolbox for proteoform identification from top-down proteomics data</h5>
-        <h6><a href=https://doi.org/10.1038/s41598-019-47724-1 title="Scientific Reports - Nature (2019)" target="_blank" rel="noopener">Scientific Reports - Nature (2019)</a></h6>
-        
-        <p class="text-muted">2019 - DOI: 10.1038/s41598-019-47724-1,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p>Basharat, A. R., Iman, K., Bibi, Z., <strong>Hussain, R.</strong>, Kabir, H. G., Shahid, A., Humayun, M., Hayat, H. A., Mustafa, M., Shoaib, M. A., Ullah, Z., Zarina, S., Ahmed, S., Uddin, E., Hamera, S., Ahmad, F., &amp; Chaudhary, S. U.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">6</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">7</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Evolution of efficacious pangenotypic Hepatitis C Virus therapies</h5>
-        <h6><a href=https://doi.org/10.1002/med.21554 title="Medicinal Research Reviews (2019)" target="_blank" rel="noopener">Medicinal Research Reviews (2019)</a></h6>
-        
-        <p class="text-muted">2019 - DOI: 10.1002/med.21554,
-            | Review Paper
-        </p>
-    </div>
-    
-    <p>Ashraf, M. U., Iman, K., Khalid, M. F., Shafi, T., Salman, H. M., Rafi, M., Javaid, N., <strong>Hussain, R.</strong>, Ahmad, F., Shahzad-ul-Hussan, S., Mirza, S., Shafiq, M., Afzal, S., Idrees, M., Hamera, S., Anwar, S., Qazi, R. Qureshi, S. A., Chaudhary, S. U.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Synthesis, in vitro and silico studies of S-alkylated 5-(4-methoxyphenyl)-4-phenyl-4H-1, 2, 4-triazole-3-thiols as cholinesterase inhibitors</h5>
-        <h6><a href=https://pdfs.semanticscholar.org/24cd/2875385b10a0c56904f6c30e3f30f5848568.pdf title="Pakistan Journal of Pharmaceutical Sciences (2018)" target="_blank" rel="noopener">Pakistan Journal of Pharmaceutical Sciences (2018)</a></h6>
-        
-        <p class="text-muted">2018 - Vol. 31, No. 06, pp. 2697-2708,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p>Arfan, M., Siddiqui, S.Z., Abbasi, M.A., ur Rehman, A., Shah, S.A.A., Ashraf, M., Rehman, J., Saleem, R. S. Z., Khalid, H., <strong>Hussain, R.</strong>, Khan, U.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">8</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">9</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Synthesis, spectral analysis and biological evaluation of 5-Substituted 1,3,4-oxadiazole-2-yl-4-(piperidin-1-ylsulfonyl)benzyl sulfide</h5>
-        <h6><a href=https://doi.org/10.1007/978-3-319-60408-4_14 title="Emerging Trends in Chemical Sciences (2017)" target="_blank" rel="noopener">Emerging Trends in Chemical Sciences (2017)</a></h6>
-        
-        <p class="text-muted">2017 - DOI: 10.1007/978-3-319-60408-4_14,
-            | Book Chapter
-        </p>
-    </div>
-    
-    <p>Khalid, H., Abbasi, M. A., <strong>Hussain, R.</strong>, Malik, A., Ashraf, M., &amp; Fatmi, M. Q.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Towards Providing Full Spectrum Antenatal Health Care in Low and Middle Income Countries</h5>
-        <h6><a href=# title="BIOSTEC 2016" target="_blank" rel="noopener">BIOSTEC 2016</a></h6>
-        
-        <p class="text-muted">2016 - HEALTHINF, pp. 478-483,
-            | Conference Paper
-        </p>
-    </div>
-    
-    <p>Abubakar, M., Bibi, A., <strong>Hussain, R.</strong>, Bibi, Z., Gul, A., Bashir, Z., Arshad, S.N., Uppal, S.U., Chaudhary, S. U.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">10</div>
-</div>
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center  d-flex">
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">11</div>
-</div>
-
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Synthesis, molecular docking studies, and in vitro screening of barbiturates/thiobarbiturates as antibacterial and cholinesterase inhibitors</h5>
-        <h6><a href=https://doi.org/10.1007/s00044-013-0847-2 title="Medicinal Chemistry Research (2014)" target="_blank" rel="noopener">Medicinal Chemistry Research (2014)</a></h6>
-        
-        <p class="text-muted">2014 - DOI: 10.1007/s00044-013-0847-2,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p>Mumtaz, S., <strong>Hussain, R.</strong>, Rauf, A., Fatmi, M. Q., Bokhari, H., Oelgemöller, M., &amp; Qureshi, A. M.</p>
-    
-    
-</div>
-
-
-
-       </div>
-     
-     
-       <div class="row horizontal-line">
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-  <div class="col-10 col-lg-8">
-    <hr />
-  </div>
-  <div class="col-1 col-lg-2 timeline-side-div">
-    <div class="corner"></div>
-  </div>
-</div>
-
-     
-   
-     
-       <div class="row align-items-center justify-content-end d-flex">
-         
-  <div class="col-10 col-lg-8">
-    <div class="publication-entry-heading">
-        
-        
-        <h5>Synthesis, biological evaluation, and molecular docking of N&#39;-(Aryl/alkylsulfonyl)-1-(phenylsulfonyl) piperidine-4-carbohydrazide derivatives</h5>
-        <h6><a href=https://doi.org/10.3906/kim-1303-89 title="Turkish Journal of Chemistry (2014)" target="_blank" rel="noopener">Turkish Journal of Chemistry (2014)</a></h6>
-        
-        <p class="text-muted">2014 - DOI: 10.3906/kim-1303-89,
-            | Research Paper
-        </p>
-    </div>
-    
-    <p>Khalid, H., Rehman, A. U., Abbasi, M. A., <strong>Hussain, R.</strong>, Khan, K. M., Ashraf, M., Ejaz, S.A., &amp; Fatmi, M. Q.</p>
-    
-    
-</div>
-
-
-
-         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
-  <div class="circle-pub font-weight-bold">12</div>
-</div>
-
-       </div>
-     
-     
-   
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-white">
-            
-
-
-
-
-<div class="container-fluid anchor pb-5 education-section">
-  
-    <h1 class="text-center">
-        <span id="education"></span>Education</h1>
-  
-
-  <div class="container">
-    <table class="education-info-table">
-        <tbody>
-            
-            
-            <tr>
-                <td class="icon">
-                    
-                    <div class="hline"></div>
-                    
-                        <div class="icon-holder">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                    </td>
-                    <td class="line">
-                        <div></div>
-                    </td>
-                    <td class="details">
-                        <div class="degree-info card">
-                            <div class="row">
-                                <div class="col-lg-10 col-md-8">
-                                    
-                                        <h5><a href="https://www.fccollege.edu.pk/" title="Forman Christian College (A Chartered University)" target="_blank" rel="noopener">Forman Christian College (A Chartered University)</a></h5>
-                                    
-                                </div>
-                                <div class="timeframe col-lg-2 col-md-4">2017 - 2023</div>
-                            </div>
-                            <h6>Ph.D. in Chemistry</h6>
-                            
-                            
-                                <div class="thesis">
-                                    <h6 class="text-muted"></h6>
-                                    <ul>
-                                        
-                                            
-                                                <li>Areas - Computational Chemistry, Bioinformatics, Cheminformatics, Software Development</li>
-                                            
-                                        
-                                            
-                                                <li>**Award: Magna Cum Laude (Higher Honors)**</li>
-                                            
-                                        
-                                            
-                                                <li>Thesis - Computer-aided drug design and synthesis of HCV NS3 protease inhibitors</li>
-                                            
-                                        
-                                            
-                                                <li>Supervisors - Dr. Hira Khalid, Prof. M. Qaiser Fatmi, Prof. Lydia Tabernero</li>
-                                            
-                                        
-                                    </ul>
-                                </div>
-                            
-                            
-                            
-                        </div>
-                    </td>
-                </tr>
-                
-            <tr>
-                <td class="icon">
-                    
-                    <div class="hline"></div>
-                    
-                        <div class="icon-holder">
-                            <i class="fas fa-university"></i>
-                        </div>
-                    </td>
-                    <td class="line">
-                        <div></div>
-                    </td>
-                    <td class="details">
-                        <div class="degree-info card">
-                            <div class="row">
-                                <div class="col-lg-10 col-md-8">
-                                    
-                                        <h5><a href="http://comsats.edu.pk/" title="COMSATS University Islamabad" target="_blank" rel="noopener">COMSATS University Islamabad</a></h5>
-                                    
-                                </div>
-                                <div class="timeframe col-lg-2 col-md-4">2011 - 2013</div>
-                            </div>
-                            <h6>M.S. in Bioinformatics</h6>
-                            
-                            
-                                <div class="thesis">
-                                    <h6 class="text-muted"></h6>
-                                    <ul>
-                                        
-                                            
-                                                <li>Areas - Bioinformatics, Bash Scripting, Cheminformatics</li>
-                                            
-                                        
-                                            
-                                                <li>Thesis - Rationalizing ligand-protein interactions and identifying cholinesterase</li>
-                                            
-                                        
-                                            
-                                                <li>Supervisor - Prof. M. Qaiser Fatmi</li>
-                                            
-                                        
-                                    </ul>
-                                </div>
-                            
-                            
-                            
-                        </div>
-                    </td>
-                </tr>
-                
-            <tr>
-                <td class="icon">
-                    
-                    <div class="hline"></div>
-                    
-                        <div class="icon-holder">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                    </td>
-                    <td class="line">
-                        <div></div>
-                    </td>
-                    <td class="details">
-                        <div class="degree-info card">
-                            <div class="row">
-                                <div class="col-lg-10 col-md-8">
-                                    
-                                        <h5><a href="http://comsats.edu.pk/" title="COMSATS University Islamabad" target="_blank" rel="noopener">COMSATS University Islamabad</a></h5>
-                                    
-                                </div>
-                                <div class="timeframe col-lg-2 col-md-4">2006 - 2010</div>
-                            </div>
-                            <h6>B.S. in Bioinformatics</h6>
-                            
-                            
-                                <div class="thesis">
-                                    <h6 class="text-muted"></h6>
-                                    <ul>
-                                        
-                                            
-                                                <li>Areas - Bioinformatics, Phylogenetic Data Analysis</li>
-                                            
-                                        
-                                            
-                                                <li>Thesis - Phylogenetic analysis of major protein-coding genes of Geminiviridae, a single-stranded DNA virus family</li>
-                                            
-                                        
-                                            
-                                                <li>Supervisor - Prof. Muhammad Zeeshan Hyder</li>
-                                            
-                                        
-                                    </ul>
-                                </div>
-                            
-                            
-                            
-                        </div>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
-    </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-dimmed">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 achievements-section">
-  
-    <h1 class="text-center">
-        <span id="achievements"></span>Achievements</h1>
-  
-  <div class="container">
-    <div class="row" id="gallery">
-    </div>
-  </div>
-  
-  <div class="d-none" id="achievements-holder">
-    
-      
-
-
-
-
-
-  
-  
-  
-  
-
-
-<div 
-  class="achievement-entry text-center"
-  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/presenter_hu_9c54a2b958f8455d.jpg');"
->
-  <i class="fas fa-search-plus" id="enlarge-icon"></i>
-  <h4 class="title" id="achievement-title">Best Poster Award</h4>
-  <div class="caption hidden col-lg-6 text-left" id="caption">
-    <h4>Best Poster Award</h4>
-    <p>Best Poster Award | 2015 | Institute of Space Technology</p>
-  </div>
-  <span style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/presenter_hu_9c54a2b958f8455d.jpg');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/presenter_hu_cd84a32c790807e2.jpg');" class="d-none" id="LargeImage"></span>
-</div>
-
-    
-      
-
-
-
-
-
-  
-  
-  
-  
-
-
-<div 
-  class="achievement-entry text-center"
-  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/sport_hu_4da1fa28a62c6da0.jpg');"
->
-  <i class="fas fa-search-plus" id="enlarge-icon"></i>
-  <h4 class="title" id="achievement-title">Marathon Race Winner</h4>
-  <div class="caption hidden col-lg-6 text-left" id="caption">
-    <h4>Marathon Race Winner</h4>
-    <p>Marathon Race Winner | 2015 | Lahore University of Management Science</p>
-  </div>
-  <span style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/sport_hu_4da1fa28a62c6da0.jpg');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/sport_hu_7df966c9abb28313.jpg');" class="d-none" id="LargeImage"></span>
-</div>
-
-    
-      
-
-
-
-
-
-  
-  
-  
-  
-
-
-<div 
-  class="achievement-entry text-center"
-  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/graduation-cap_hu_430eba4bbcd1b3b0.jpg');"
->
-  <i class="fas fa-search-plus" id="enlarge-icon"></i>
-  <h4 class="title" id="achievement-title">Secured Research Fellowship</h4>
-  <div class="caption hidden col-lg-6 text-left" id="caption">
-    <h4>Secured Research Fellowship</h4>
-    <p>Secured Research Fellowship | 2021 | $9800 for six months</p>
-  </div>
-  <span style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/graduation-cap_hu_430eba4bbcd1b3b0.jpg');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://rashid-bioinfo.github.io/images/sections/achievements/graduation-cap_hu_5fd92a7d1ec83244.jpg');" class="d-none" id="LargeImage"></span>
-</div>
-
-    
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-white">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 projects-section" id="projects">
-  
-    <h1 class="text-center">
-        <span id="projects"></span>Projects</h1>
-  
-  <div class="container ml-auto text-center">
-    <div class="btn-group flex-wrap" role="group" id="project-filter-buttons">
-      
-      <button type="button" class="btn btn-dark" data-filter="all">
-        All
-      </button>
-      
-      <button type="button" class="btn btn-dark" data-filter="professional">
-        Professional
-      </button>
-      
-      <button type="button" class="btn btn-dark" data-filter="academic">
-        Academic
-      </button>
-      
-      <button type="button" class="btn btn-dark" data-filter="hobby">
-        Hobby
-      </button>
-      
-    </div>
-  </div>
-  <div class="container filtr-projects">
-    <div class="row" id="project-card-holder">
-      
-        <div
-  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
-  data-category='all, professional,MATLAB'
->
-  <div class="card mt-1">
-    <div class="card">
-      <a class="card-header" href="https://github.com/BIRL/SPECTRUM_v2.0.0.0" target="_blank" rel="noopener">
-        <div>
-          <div class="d-flex">
-            
-
-            
-            
-            
-            
-              
-            
-
-            <img class="card-img-xs" src="/images/sections/projects/lums_hu_b21b97e351569568.png" alt="SPECTRUM" />
-            
-            
-            <h5 class="card-title mb-0">SPECTRUM</h5>
-          </div>
-          <div class="sub-title">
-            <span>Contributor</span>
-            <span></span>
-          </div>
-        </div>
-      </a>
-      <div class="card-body text-justify pt-1 pb-1">
-        <p>A MATLAB Toolbox for Proteoform Identification from Top-Down Proteomics Data.</p>
-        
-        <div class="project-card-footer">
-          
-            <div class="project-tags-holder">
-              
-                  <span class="badge btn-info">
-                    professional
-                  </span>
-              
-                  <span class="badge btn-info">
-                    MATLAB
-                  </span>
-              
-            </div>
-          
-          <div class="project-btn-holder">
-            
-            <a
-              class="github-button-inactive project-btn"
-              href="https://github.com/BIRL/SPECTRUM_v2.0.0.0"
-              data-icon="octicon-standard"
-              data-show-count="true"
-              aria-label="Star SPECTRUM"
-              >Star</a
-            >
-            
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
 
-      
-        <div
-  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
-  data-category='all, professional,machine-learning'
->
-  <div class="card mt-1">
-    <div class="card">
-      <a class="card-header" href="https://github.com/rashid-bioinfo/BioPredict" target="_blank" rel="noopener">
-        <div>
-          <div class="d-flex">
-            
-
-            
-            
-            
-            
-              
-            
-
-            <img class="card-img-xs" src="/images/sections/projects/ml_hu_528db078f975ef88.png" alt="Bioactivity Predictor" />
-            
-            
-            <h5 class="card-title mb-0">Bioactivity Predictor</h5>
-          </div>
-          <div class="sub-title">
-            <span>Developer</span>
-            <span></span>
-          </div>
-        </div>
-      </a>
-      <div class="card-body text-justify pt-1 pb-1">
-        <p>Machine Learning based QSAR model for COVID19 Replicase Polyprotein to predict pIC50 of a given compound.</p>
-        
-        <div class="project-card-footer">
-          
-            <div class="project-tags-holder">
-              
-                  <span class="badge btn-info">
-                    professional
-                  </span>
-              
-                  <span class="badge btn-info">
-                    machine-learning
-                  </span>
-              
-            </div>
-          
-          <div class="project-btn-holder">
-            
-            <a
-              class="github-button-inactive project-btn"
-              href="https://github.com/rashid-bioinfo/BioPredict"
-              data-icon="octicon-standard"
-              data-show-count="true"
-              aria-label="Star Bioactivity Predictor"
-              >Star</a
-            >
-            
-          </div>
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rashid Hussain, Ph.D. All rights reserved.</span>
+      <span>rashid-bioinfo.github.io</span>
     </div>
   </div>
-</div>
+</footer>
 
-      
-        <div
-  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
-  data-category='all, professional,GitHub'
->
-  <div class="card mt-1">
-    <div class="card">
-      <a class="card-header" href="https://github.com/rashid-bioinfo/rashid-bioinfo.github.io" target="_blank" rel="noopener">
-        <div>
-          <div class="d-flex">
-            
+<script>
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-            
-            
-            
-            
-              
-            
+  /* ── Mobile menu toggle ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
 
-            <img class="card-img-xs" src="/images/sections/projects/blog_hu_147a7d4cb4a540c5.png" alt="Personal Blog" />
-            
-            
-            <h5 class="card-title mb-0">Personal Blog</h5>
-          </div>
-          <div class="sub-title">
-            <span>Developer</span>
-            <span></span>
-          </div>
-        </div>
-      </a>
-      <div class="card-body text-justify pt-1 pb-1">
-        <p>Portfolio and personal blog is created using hugo theme and deployed on GitHub.<br>
-<a href="https://rashid-bioinfo.github.io/">https://rashid-bioinfo.github.io/</a></p>
-        
-        <div class="project-card-footer">
-          
-            <div class="project-tags-holder">
-              
-                  <span class="badge btn-info">
-                    professional
-                  </span>
-              
-                  <span class="badge btn-info">
-                    GitHub
-                  </span>
-              
-            </div>
-          
-          <div class="project-btn-holder">
-            
-            <a
-              class="github-button-inactive project-btn"
-              href="https://github.com/rashid-bioinfo/rashid-bioinfo.github.io"
-              data-icon="octicon-standard"
-              data-show-count="true"
-              aria-label="Star Personal Blog"
-              >Star</a
-            >
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  /* ── Intersection observer for scroll animations ── */
+  const ioOpts = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('visible', 'vis');
+      /* animate skill bars */
+      el.querySelectorAll('.bar-fill').forEach(b => { b.style.width = b.dataset.lvl + '%'; });
+    });
+  }, ioOpts);
 
-      
-        <div
-  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
-  data-category='all, academic,Python'
->
-  <div class="card mt-1">
-    <div class="card">
-      <a class="card-header" href="https://github.com/rashid-bioinfo/Python_Notepad_App" target="_blank" rel="noopener">
-        <div>
-          <div class="d-flex">
-            
+  document.querySelectorAll(
+    '.anim-up,.anim-left,.anim-right,.skill-item,.tl-item,.pub-card,.proj-card'
+  ).forEach(el => io.observe(el));
 
-            
-            
-            
-            
-              
-            
+  /* ── Trigger hero immediately ── */
+  setTimeout(() => {
+    document.querySelectorAll('.anim-left,.anim-right').forEach(el => el.classList.add('vis'));
+  }, 80);
 
-            <img class="card-img-xs" src="/images/sections/projects/python_hu_418dac9d0d730905.png" alt="Notepad app" />
-            
-            
-            <h5 class="card-title mb-0">Notepad app</h5>
-          </div>
-          <div class="sub-title">
-            <span>Developer</span>
-            <span></span>
-          </div>
-        </div>
-      </a>
-      <div class="card-body text-justify pt-1 pb-1">
-        <p>A notepad GUI app is developed in Python-Tkinter.</p>
-        
-        <div class="project-card-footer">
-          
-            <div class="project-tags-holder">
-              
-                  <span class="badge btn-info">
-                    academic
-                  </span>
-              
-                  <span class="badge btn-info">
-                    Python
-                  </span>
-              
-            </div>
-          
-          <div class="project-btn-holder">
-            
-            <a
-              class="github-button-inactive project-btn"
-              href="https://github.com/rashid-bioinfo/Python_Notepad_App"
-              data-icon="octicon-standard"
-              data-show-count="true"
-              aria-label="Star Notepad app"
-              >Star</a
-            >
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  /* ── Active nav highlighting ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navAs.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  }, { passive: true });
 
-      
-    </div>
-  </div>
-</div>
+  /* ── Skill bars on skills section visible ── */
+  const skillsSection = document.getElementById('skills');
+  const skillsIo = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.bar-fill').forEach(b => { b.style.width = b.dataset.lvl + '%'; });
+      skillsIo.disconnect();
+    }
+  }, { threshold: 0.2 });
+  skillsIo.observe(skillsSection);
 
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-dimmed">
-            
-
-  
-
-
-<div class="container-fluid anchor pb-5 accomplishments-section">
-  
-    <h1 class="text-center">
-        <span id="accomplishments"></span>Accomplishments</h1>
-  
-  
-  <div class="container">
-    <div class="row" id="acomplishment-card-holder">
-      
-        <div class="col-md-12 col-lg-6 p-2">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Certificate - The Unix Workbench</h5>
-      <div class="sub-title">
-        <span><a href="https://www.jhu.edu/" title="Johns Hopkins University" target="_blank" rel="noopener">Johns Hopkins University</a></span>
-        <span class="ml-2">Jul 8, 2022</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>I really enjoyed this course. The course covers from very basic to advance topics in Unix. I have learnt regular expressions, bash scripting, GitHub, and Cloud Computing. I also made account on DigitalOcean and accessed the system remotely. Overall very good experience and I have learnt a lot in this course.</p>
-    </div>
-    <div class="card-footer">
-      
-        <a class="btn btn-outline-info ml-1 pl-2 mb-2" href="https://www.coursera.org/account/accomplishments/certificate/ZXXWHL2UMC36" target="_blank" rel="noopener" role="button">View Certificate</a>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="col-md-12 col-lg-6 p-2">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Certificate - What is Data Science?</h5>
-      <div class="sub-title">
-        <span><a href="https://www.ibm.com/us-en/" title="IBM" target="_blank" rel="noopener">IBM</a></span>
-        <span class="ml-2">Jun 14, 2022</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>In this course I have got basic understanding of data science. I got the chance to know about big data, data mining, deep learning, regession etc. I also studied about Hadoop which is a framework for distributed processing of large data sets. I also got the chance to know about IBM cloud features, created IBM cloud account and explored Watson Studio Instance and Jupyter.</p>
-    </div>
-    <div class="card-footer">
-      
-        <a class="btn btn-outline-info ml-1 pl-2 mb-2" href="https://www.coursera.org/account/accomplishments/verify/JVX2MGHLNNDQ" target="_blank" rel="noopener" role="button">View Certificate</a>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="col-md-12 col-lg-6 p-2">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Symposium - Introduction to Structure-Based Drug Design using MOE</h5>
-      <div class="sub-title">
-        <span><a href="https://www.chemcomp.com/" title="Chemical Computing Group" target="_blank" rel="noopener">Chemical Computing Group</a></span>
-        <span class="ml-2">Jun 09, 2022</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>This was a three hours long online symposium with focus on using Molecular Operating Environment (MOE), a software for computer aided drug design. During the session, a case study for structure based drug design of an Epidermal Growth Factor (PDB ID: 1M17) was followed. The key concepts regarding protein-ligand representation, compound optimization, docking and analysing the docking results through scoring and generated fingerprints were discussed.</p>
-    </div>
-    <div class="card-footer">
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="col-md-12 col-lg-6 p-2">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Virtual Drug Discovery Symposium 2021</h5>
-      <div class="sub-title">
-        <span><a href="https://lums.edu.pk/" title="LUMS" target="_blank" rel="noopener">LUMS</a></span>
-        <span class="ml-2">Nov 01, 2021</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>This was a one day online symposium with a focus on virtual drug discovery. Many renowned scientists across the globe gave their talks. The core concepts discussed in the talks were about the current breakthrough in drug design and discovery and future challanges.</p>
-    </div>
-    <div class="card-footer">
-      
-        <a class="btn btn-outline-info ml-1 pl-2 mb-2" href="https://github.com/rashid-bioinfo/certificates/blob/master/LUMS_Conference.pdf" target="_blank" rel="noopener" role="button">View Certificate</a>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="col-md-12 col-lg-6 p-2">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Certificate - Introduction to Molecular Modeling in Drug Discovery</h5>
-      <div class="sub-title">
-        <span><a href="https://www.schrodinger.com/" title="Schrodinger" target="_blank" rel="noopener">Schrodinger</a></span>
-        <span class="ml-2">Dec 2020 - Jan 2021</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>In this course I have got experience of industry-leading computational molecular modeling tools used to aid in drug discovery and design. In average this course took 25 hours over a span of 5 weeks to complete. In addition to utilizing modern techniques such as active learning and multimodal teaching, I have also got chance to get hands-on with Schrödinger&rsquo;s Maestro and LiveDesign.</p>
-    </div>
-    <div class="card-footer">
-      
-        <a class="btn btn-outline-info ml-1 pl-2 mb-2" href="https://github.com/rashid-bioinfo/certificates/blob/master/Schrodinger_Introduction%20to%20Molecular%20Modeling%20in%20Drug%20Discovery.pdf" target="_blank" rel="noopener" role="button">View Certificate</a>
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-        
-          <div class="container-fluid section-holder d-flex bg-white">
-            
-
-  
-
-
-
-
-
-
-<div class="container-fluid anchor pb-5 recent-posts-section">
-  
-    <h1 class="text-center">
-        <span id="recent-posts"></span>Recent Posts</h1>
-  
-  <div class="container">
-    <div class="row" id="recent-post-cards">
-      
-        <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/posts/mendeley/" title="Managing References &amp; Bibliography" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/posts/mendeley/hero.svg'
-          alt="Card image cap"
-        />
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Managing References &amp; Bibliography</h5>
-        <p class="card-text post-summary"> <p>Online session for explaining thesis writing and hands on training on Mendeley, a software for managing references and bibliography.</p>
-<!-- Greeting! This is an introduction post. This post tests the followings:
-
-- Hero image is in the same directory as the post.
-- This post should be at top of the sidebar.
-- Post author should be the same as specified in `author.yaml` file. -->
-<hr>
-<p>This webinar is about managing references in your thesis or manuscript. Please watch the following videos, they will guide you right from installing mendeley software to inserting and managing references and bibliography in your documents.</p></p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">October 6, 2020</span>
-        <a href="/posts/mendeley/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/posts/modeller/" title="Homology Modeling" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/posts/modeller/hero.svg'
-          alt="Card image cap"
-        />
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Homology Modeling</h5>
-        <p class="card-text post-summary"> <p>Online tutorials for Homology Modeling using Modeller tool.</p>
-<!-- Greeting! This is an introduction post. This post tests the followings:
-
-- Hero image is in the same directory as the post.
-- This post should be at top of the sidebar.
-- Post author should be the same as specified in `author.yaml` file. -->
-<hr>
-<p>This tutorial series is about homology modeling using Modeller. Please watch the following videos, the videos are created to guide each step involved in homology modeling so that even naive user/viewer can also benefit from this effort.</p></p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">June 15, 2020</span>
-        <a href="/posts/modeller/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/posts/cadd/" title="DOCKING - Computer aided drug design" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/posts/cadd/hero.svg'
-          alt="Card image cap"
-        />
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">DOCKING - Computer aided drug design</h5>
-        <p class="card-text post-summary"> <p>Online tutorials for performing docking against a protein in structure based drug design.</p>
-<!-- Greeting! This is an introduction post. This post tests the followings:
-
-- Hero image is in the same directory as the post.
-- This post should be at top of the sidebar.
-- Post author should be the same as specified in `author.yaml` file. -->
-<hr>
-<p>This tutorial series is about peforming docking using Autodock tools. Please watch the following videos, the videos are created to guide each step involved in docking so that naive user/viewer can also benefit from this effort.</p></p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">June 6, 2020</span>
-        <a href="/posts/cadd/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-          </div>
-          
-          
-            
-          
-        
-      
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-    
-    
-      
-    
-  
-
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-  
-  
-  
-
-  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
-    <div class="container pt-5">
-      <div class="row text-left">
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Navigation</h5>
-          
-          <ul>
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#about">About</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#skills">Skills</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#experiences">Experience</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#publications">Publications</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#education">Education</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#achievements">Achievements</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#projects">Projects</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#accomplishments">Accomplishments</a>
-                </li>
-              
-              
-                
-                
-                  
-                
-                <li class="nav-item">
-                  <a class="smooth-scroll" href="https://rashid-bioinfo.github.io/#recent-posts">Recent Posts</a>
-                </li>
-              
-            
-              
-            
-          </ul>
-          
-        </div>
-        
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Contact me:</h5>
-          <ul>
-            
-              
-                <li><a href=mailto:rashid.bioinfo@gmail.com target="_blank" rel="noopener">
-                  <span><i class="fas fa-envelope"></i></span> <span>rashid.bioinfo@gmail.com</span>
-                </a></li>
-              
-            
-          </ul>
-        </div>
-        
-        
-        
-      </div>
-    </div>
-    
-    
-  </footer>
-
-
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/js/navbar.js"></script>
-<script type="text/javascript" src="/js/plyr.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-    
-    <script src="/js/itype.min.js"></script>
-    <script src="/js/github-button.js"></script>
-    <script src="/js/home.js"></script>
-    <script src="/js/jquery.filterizr.min.js"></script>
-
-    
+  /* ── Profile image fallback ── */
+  const img = document.getElementById('profile-img');
+  img.addEventListener('error', () => {
+    img.parentElement.innerHTML =
+      '<div class="profile-initials">RH</div>';
+  });
+</script>
 </body>
 </html>

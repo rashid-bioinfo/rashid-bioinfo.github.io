@@ -79,6 +79,12 @@ Original SVG created from scratch — no copyright. Bold white "R" on blue→tea
 - Global Talent endorsing body: Royal Society, UK (NOT Royal Society of Chemistry)
 - Ayass BioScience end date: May 2025 (NOT Jun 2025)
 
+## Recent fixes (2026-08-02)
+- LinkedIn URL in `#connect` section was wrong (`/in/ch-rashid/`) — fixed to `https://www.linkedin.com/in/rashid-bioinfo/`
+- Hero name `white-space: nowrap` — keeps "Hi, I'm Rashid Hussain" on one line
+- story.html converted fully to first-person voice
+- favicon.svg added (original R monogram, blue→teal gradient)
+
 ## Backups
 - **GitHub:** Old Hugo site preserved at `backup/old-portfolio` branch on rashid-bioinfo/rashid-bioinfo.github.io
 - **Local zip:** `20270802_rashidBlog.zip` — full source + all relevant files, created 2026-08-02
